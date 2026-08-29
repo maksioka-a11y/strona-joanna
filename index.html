@@ -1,0 +1,1669 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Joanna Kamasińska — Makeup · Hair · Foto</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Fraunces:ital,opsz,wght@0,9..144,300;0,9..144,400;0,9..144,500;0,9..144,600;1,9..144,300;1,9..144,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ================= BAZA I ZMIENNE ================= */
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --bg-dark:#181412;--bg-card:#241D1A;--bg-light:#F7F3EE;--text-dark:#181412;--text-light:#F7F3EE;--text-muted:#A38C7D;
+  --gold:#C5A55A;--gold-hover:#D4B87A;
+  --f-head:'Fraunces',Georgia,serif;--f-body:'Inter',sans-serif;--f-accent:'Cormorant Garamond',serif;
+  --radius-md:16px;--radius-lg:24px;--radius-pill:100px;
+  --pad-x:clamp(20px,5vw,100px);--pad-y:clamp(80px,10vw,150px);
+  --ease:cubic-bezier(0.25,1,0.5,1);
+}
+html{scroll-behavior:smooth}
+body{font-family:var(--f-body);background:var(--bg-dark);color:var(--text-light);line-height:1.6;overflow-x:hidden}
+::selection{background:var(--gold);color:var(--bg-dark)}
+a{text-decoration:none;color:inherit}
+button{border:none;background:none;cursor:pointer;font-family:inherit;outline:none;}
+img,video{max-width:100%;display:block}
+
+/* ================= ZŁOTA KURTYNA ================= */
+.loader-curtain { position: fixed; inset: 0; z-index: 99999; display: flex; pointer-events: auto; }
+.curtain-panel { width: 50%; height: 100%; background: #0a0807; transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0.3s; }
+.curtain-left { border-right: 2px solid rgba(197, 165, 90, 0.6); }
+.curtain-right { border-left: 2px solid rgba(197, 165, 90, 0.6); }
+.loader-content { position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); z-index: 100000; transition: opacity 0.6s ease, transform 1s ease; pointer-events: none; }
+.loader-curtain.done .curtain-left { transform: translateX(-100%); }
+.loader-curtain.done .curtain-right { transform: translateX(100%); }
+.loader-curtain.done .loader-content { opacity: 0; transform: translate(-50%, -50%) scale(1.4); }
+.loader-curtain.done { pointer-events: none; }
+
+/* ================= KURSOR DESKTOP ================= */
+@media(pointer:fine){
+  body,a,button,.svc-item,.gal-item,.gal-filter-btn,.soc-btn,.quiz-btn,.lightbox-nav,.lightbox-close,.svc-pick{cursor:none!important}
+  input,textarea{cursor:text!important}
+  .cursor-dot,.cursor-outline{position:fixed;top:0;left:0;pointer-events:none;z-index:100001;border-radius:50%;transform:translate(-50%,-50%)}
+  .cursor-dot{width:8px;height:8px;background:var(--gold)}
+  .cursor-outline{width:40px;height:40px;border:1px solid var(--gold);transition:width .2s,height .2s,background .2s}
+  .cursor-outline.hover{width:70px;height:70px;background:rgba(197,165,90,.15);border-color:transparent}
+}
+@media(pointer:coarse){.cursor-dot,.cursor-outline{display:none}}
+
+/* SYSTEM ZDJĘĆ */
+.img-wrapper{position:relative;overflow:hidden;border-radius:var(--radius-md);background:linear-gradient(135deg,#2A221E,#3D322B)}
+.img-wrapper img,.img-wrapper video{width:100%;height:100%;object-fit:cover;transition:transform .6s var(--ease)}
+.img-error-state{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;background:#181412;border:1px dashed rgba(197,165,90,.3);color:var(--gold);text-align:center;padding:16px;z-index:5;font-size:12px}
+
+/* MAGNETYCZNE PRZYCISKI */
+.magnetic { transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1), background 0.3s, color 0.3s, border-color 0.3s, box-shadow 0.3s; will-change: transform; }
+
+/* ================= ZŁOTE PRZYCISKI (POŁYSK) ================= */
+@keyframes goldShimmer{
+  0%,100%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+}
+@keyframes btnShine{
+  0%{left:-75%}
+  55%,100%{left:130%}
+}
+
+/* ================= NAV ================= */
+.nav{position:fixed;top:20px;left:50%;z-index:9999;width:95%;max-width:1200px;background:rgba(24,20,18,.75);backdrop-filter:blur(16px);-webkit-backdrop-filter:blur(16px);border:1px solid rgba(197,165,90,.25);border-radius:var(--radius-pill);padding:10px 25px;box-shadow:0 10px 30px rgba(0,0,0,.35),0 0 20px rgba(197,165,90,.06);transform:translateX(-50%) translateY(0);transition:transform .4s var(--ease),background .4s,opacity .4s}
+.nav.scrolled{background:rgba(24,20,18,.92);border-color:rgba(197,165,90,.4);box-shadow:0 10px 30px rgba(0,0,0,.5),0 0 30px rgba(197,165,90,.1)}
+.nav.nav-hidden{transform:translateX(-50%) translateY(-160%);opacity:0;pointer-events:none}
+.nav-in{display:flex;justify-content:space-between;align-items:center;width:100%}
+.nav-logo .img-wrapper{border-radius:50%;width:45px;height:45px;border:1px solid var(--gold)}
+.nav-links{display:flex;gap:28px;align-items:center;list-style:none;margin-left:auto;margin-right:28px}
+.nav-links a{font-size:11px;letter-spacing:.15em;text-transform:uppercase;font-weight:500;color:var(--text-light);position:relative;padding:5px 0;transition: color 0.3s;}
+.nav-links a:hover{color:var(--gold)}
+.nav-links a::after{content:'';position:absolute;bottom:-2px;left:50%;width:4px;height:4px;border-radius:50%;background:var(--gold);transform:translateX(-50%) scale(0);transition:transform .3s cubic-bezier(.175,.885,.32,1.275)}
+.nav-links a:hover::after{transform:translateX(-50%) scale(1)}
+.nav-cta{background:linear-gradient(135deg,#E8C96A 0%,#C5A55A 30%,#F6E3A8 50%,#C5A55A 70%,#E8C96A 100%);background-size:220% 220%;color:var(--bg-dark)!important;padding:12px 28px;border-radius:var(--radius-pill);font-weight:600;letter-spacing:.1em;font-size:11px;text-transform:uppercase;display:inline-block;position:relative;overflow:hidden;box-shadow:0 4px 14px rgba(197,165,90,.35), inset 0 1px 0 rgba(255,255,255,.55);animation:goldShimmer 3.5s ease-in-out infinite;}
+.nav-cta::after{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-25deg);animation:btnShine 2.8s ease-in-out infinite;}
+.nav-cta:hover{background:linear-gradient(135deg,#F5D98A 0%,#D4B87A 30%,#FFF2C2 50%,#D4B87A 70%,#F5D98A 100%);background-size:220% 220%}
+.burger{display:none;width:30px;height:20px;position:relative;z-index:10002}
+.burger span{position:absolute;width:100%;height:2px;background:var(--gold);transition:.3s}
+.burger span:nth-child(1){top:0}.burger span:nth-child(2){top:9px}.burger span:nth-child(3){top:18px}
+.burger.open span:nth-child(1){transform:rotate(45deg);top:9px}.burger.open span:nth-child(2){opacity:0}.burger.open span:nth-child(3){transform:rotate(-45deg);top:9px}
+.mob-nav{position:fixed;inset:0;background:rgba(24,20,18,.98);backdrop-filter:blur(15px);z-index:9998;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:28px;opacity:0;visibility:hidden;transition:.4s}
+.mob-nav.open{opacity:1;visibility:visible}
+.mob-nav a{font-family:var(--f-head);font-size:32px;color:var(--text-light)}
+@media(max-width:1000px){.nav{border-radius:0;width:100%;top:0;left:0;transform:none;padding:10px 20px}.nav.nav-hidden{transform:translateY(-100%)}.nav-links,.nav-cta{display:none}.burger{display:block}}
+
+/* BAZOWE UI */
+.btn{display:inline-flex;align-items:center;justify-content:center;padding:16px 36px;border-radius:var(--radius-pill);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:600}
+.btn-gold{background:linear-gradient(135deg,#E8C96A 0%,#C5A55A 30%,#F6E3A8 50%,#C5A55A 70%,#E8C96A 100%);background-size:220% 220%;color:var(--bg-dark);border:1px solid #E8C96A;position:relative;overflow:hidden;box-shadow:0 6px 18px rgba(197,165,90,.4), inset 0 1px 0 rgba(255,255,255,.55);animation:goldShimmer 3.5s ease-in-out infinite;}
+.btn-gold::after{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(255,255,255,.75),transparent);transform:skewX(-25deg);animation:btnShine 2.8s ease-in-out infinite;}
+.btn-gold:hover{background:linear-gradient(135deg,#F5D98A 0%,#D4B87A 30%,#FFF2C2 50%,#D4B87A 70%,#F5D98A 100%);background-size:220% 220%;box-shadow:0 12px 28px rgba(197,165,90,.5), inset 0 1px 0 rgba(255,255,255,.65)}
+.btn-outline{background:transparent;color:var(--gold);border:1px solid var(--gold);position:relative;overflow:hidden}
+.btn-outline::after{content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;background:linear-gradient(120deg,transparent,rgba(197,165,90,.35),transparent);transform:skewX(-25deg);transition:left .6s ease}
+.btn-outline:hover{background:rgba(197,165,90,.12);color:#F2DE9B}
+.btn-outline:hover::after{left:130%}
+.btn-light{background:transparent;color:var(--text-dark);border:1px solid var(--text-dark)}
+.btn-light:hover{background:var(--text-dark);color:var(--bg-light)}
+.eyebrow{display:inline-block;font-size:10px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);margin-bottom:20px;font-weight:600}
+.sec-title{font-family:var(--f-head);font-size:clamp(36px,5vw,64px);line-height:1.1;font-weight:400;margin-bottom:20px}
+.sec-title em{font-style:italic;color:var(--gold)}
+.sec-desc{font-family:var(--f-accent);font-size:clamp(18px,2vw,24px);font-style:italic;color:var(--text-muted)}
+.container{max-width:1200px;margin:0 auto; width:100%;}
+.reveal{opacity:0;transform:translateY(40px);transition:all .8s var(--ease)}
+.reveal.active{opacity:1;transform:translateY(0)}
+
+/* ================= HERO ================= */
+.hero{height:100vh;min-height:700px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:100px var(--pad-x) 40px;position:relative;z-index:1; overflow:hidden;}
+.hero-bg{position:absolute;inset:-50px;z-index:-2;will-change:transform;}
+.hero-bg img{width:100%;height:100%;object-fit:cover;}
+.hero-overlay{position:absolute;inset:0;z-index:-1;background:linear-gradient(to bottom,rgba(24,20,18,.35),rgba(24,20,18,.95));}
+.hero h1{font-family:var(--f-head);font-size:clamp(48px,8vw,110px);font-weight:400;line-height:1.1;margin-bottom:20px;position:relative;z-index:2;}
+.hero p{font-family:var(--f-accent);font-size:clamp(20px,2.5vw,28px);font-style:italic;color:var(--text-muted);margin-bottom:40px;max-width:700px;position:relative;z-index:2;}
+.hero-btns{display:flex;gap:20px;justify-content:center;flex-wrap:wrap;position:relative;z-index:2;}
+
+/* SCROLL TEXT */
+.scroll-fill-text{background:linear-gradient(to right,var(--gold) var(--fill,0%),rgba(24,20,18,.15) var(--fill,0%));-webkit-background-clip:text;background-clip:text;color:transparent;display:inline-block;will-change:--fill}
+.scroll-fill-text em{color:transparent;font-style:italic}
+
+/* ================= O MNIE ================= */
+.about{
+  background:var(--bg-light); color:var(--text-dark); padding:var(--pad-y) var(--pad-x); 
+  border-radius:40px 40px 0 0; margin-top:-80px; position:relative; z-index:10; 
+  box-shadow: 0 -20px 50px rgba(0,0,0,0.4);
+}
+.vert-marquee {
+  position: absolute; top: 0; left: 20px; width: 150px; height: 200%;
+  writing-mode: vertical-rl; text-orientation: mixed;
+  font-family: var(--f-head); font-size: 100px; font-weight: 600;
+  color: rgba(0,0,0,0.025); letter-spacing: 0.1em;
+  display: flex; align-items: center; justify-content: flex-start;
+  animation: vertScroll 40s linear infinite; pointer-events: none; z-index: 0;
+}
+@keyframes vertScroll { 0% { transform: translateY(0); } 100% { transform: translateY(-50%); } }
+
+.about-grid{
+  display:grid; grid-template-columns:1fr 1fr; gap:clamp(40px,8vw,100px); 
+  align-items:center; position:relative; z-index:2; 
+  max-width:1200px; margin:0 auto;
+}
+.reveal-mask { 
+  position: relative; overflow: hidden; border-radius: var(--radius-lg); aspect-ratio: 4/5; 
+  border: 1px solid rgba(197, 165, 90, 0.4); box-shadow: 0 0 30px rgba(197, 165, 90, 0.15);
+}
+.reveal-mask::after {
+  content: ''; position: absolute; inset: 0; background: var(--bg-card);
+  transform-origin: top; transition: transform 1.2s cubic-bezier(0.77, 0, 0.175, 1) 0.2s; z-index: 5;
+}
+.reveal.active.reveal-mask::after { transform: scaleY(0); }
+.parallax-wrap { width: 100%; height: 125%; position: absolute; top: -12.5%; left: 0; will-change: transform; }
+.smooth-video { width:100%; height:100%; object-fit:cover; }
+
+.about-txt p{margin-bottom:20px;font-size:15px;line-height:1.8;color:#4A3B30}
+@media(max-width:900px){.about-grid{grid-template-columns:1fr} .vert-marquee{display:none;}}
+
+/* MARKI */
+.brands-ticker{background:#110e0c;padding:25px 0;overflow:hidden;border-top:1px solid rgba(197,165,90,.1);border-bottom:1px solid rgba(197,165,90,.1);display:flex;white-space:nowrap; position:relative; z-index:2;}
+.brands-track{display:flex;gap:40px;animation:marquee 35s linear infinite}
+.brands-track span{font-family:var(--f-head);font-size:14px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);opacity:.7}
+.brands-track .dot{font-size:10px;opacity:.4}
+@keyframes marquee{to{transform:translateX(-50%)}}
+
+/* ================= EFEKT PRZYPIĘCIA OFERTY + WJAZD PAKIETÓW ================= */
+.pin-wrap{position:relative}
+.pin-wrap .services{
+  position:sticky;top:0;
+  min-height:100vh;
+  display:flex;flex-direction:column;justify-content:center;
+}
+.pin-wrap .photo{position:relative;z-index:5;background:#181412}
+@media(prefers-reduced-motion:reduce){
+  .pin-wrap .services{position:relative}
+}
+/* Na telefonach i tabletach efekt przypięcia jest wyłączony — oferta przewija się normalnie i widać całość. */
+@media(max-width:1000px){
+  .pin-wrap .services{
+    position:relative;top:auto;
+    min-height:0;height:auto;
+    display:block;overflow:visible
+  }
+}
+
+/* PIASKOWY PASEK MARQUEE */
+.sand-ticker{background:linear-gradient(180deg,#D9C2A0 0%,#C9AE84 100%);padding:26px 0;overflow:hidden;display:flex;white-space:nowrap;position:relative;z-index:2;border-top:1px solid rgba(24,20,18,.12);border-bottom:1px solid rgba(24,20,18,.12)}
+.sand-ticker .brands-track span{color:#181412;opacity:.78}
+.sand-ticker .brands-track .dot{color:#181412;opacity:.35}
+
+/* ================= OFERTA (ZŁOTY PYŁ TYLKO TUTAJ) ================= */
+.services{padding:var(--pad-y) var(--pad-x); background:var(--bg-dark); position:relative; overflow:hidden;}
+#ofertaParticles { position:absolute; inset:0; width:100%; height:100%; pointer-events:none; z-index:0; mix-blend-mode:screen; }
+
+.svc-grid{display:grid;grid-template-columns:1fr 1fr;gap:60px;margin-top:60px; position:relative; z-index:2;}
+.services .sec-title, .services .sec-desc, .services .eyebrow { position:relative; z-index:2; }
+
+.svc-col h3{font-family:var(--f-head);font-size:32px;margin-bottom:20px;color:var(--gold);display:flex;align-items:center;gap:15px;}
+.svc-video-banner { width: 100%; height: 120px; border-radius: var(--radius-md); overflow: hidden; margin-bottom: 25px; position: relative; border: 1px solid rgba(197,165,90,0.2); }
+.svc-video-banner video { width: 100%; height: 100%; object-fit: cover; filter: brightness(0.8); }
+.svc-item{display:flex;justify-content:space-between;align-items:center;padding:20px 0;border-bottom:1px dashed rgba(255,255,255,.1);cursor:pointer;transition:.3s}
+.svc-item:hover{padding-left:15px;border-color:var(--gold);background:linear-gradient(90deg,rgba(197,165,90,.05),transparent)}
+
+.svc-info { display: flex; align-items: center; gap: 10px; }
+.svc-info h4{font-family:var(--f-head);font-size:18px;font-weight:400;margin-bottom:5px;transition:.3s; display:flex; align-items:center;}
+.svc-info h4::before { content: '✦'; color: var(--gold); font-size: 11px; margin-right: 8px; opacity: 0.8; }
+.svc-item:hover .svc-info h4{color:var(--gold)}
+
+.svc-info p{font-family:var(--f-accent);font-style:italic;font-size:14px;color:var(--text-muted); margin:0;}
+.svc-arrow { font-size: 16px; color: var(--gold); opacity: 0; transform: translateX(-10px); transition: 0.3s; }
+.svc-item:hover .svc-arrow { opacity: 1; transform: translateX(0); }
+.svc-price{font-family:var(--f-head);font-size:22px;color:var(--gold);white-space:nowrap}
+@media(max-width:900px){.svc-grid{grid-template-columns:1fr}}
+
+.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(5px);z-index:100000;display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:.4s;padding:20px}
+.modal-overlay.open{opacity:1;visibility:visible}
+.modal-content{background:var(--bg-card);border-radius:var(--radius-lg);width:100%;max-width:900px;display:grid;grid-template-columns:1fr 1fr;overflow:hidden;border:1px solid rgba(197,165,90,.2);transform:translateY(20px) scale(.96);transition:.4s}
+.modal-overlay.open .modal-content{transform:none}
+.modal-close{position:absolute;top:15px;right:20px;font-size:30px;color:#fff;z-index:10;background:rgba(0,0,0,.5);width:40px;height:40px;border-radius:50%;display:flex;align-items:center;justify-content:center}
+.modal-img{min-height:400px;position:relative;background:#111}
+.modal-img img{width:100%;height:100%;object-fit:cover}
+.modal-text{padding:50px 40px;display:flex;flex-direction:column;justify-content:center}
+.modal-text h3{font-family:var(--f-head);font-size:32px;color:var(--gold);margin-bottom:15px}
+.modal-text p{font-size:14px;line-height:1.8;margin-bottom:25px;color:var(--text-light)}
+.modal-price{font-family:var(--f-head);font-size:28px;margin-bottom:30px}
+@media(max-width:800px){.modal-content{grid-template-columns:1fr}.modal-img{min-height:240px}.modal-text{padding:30px 20px}}
+
+/* ================= SESJE FOTO (Z OGRANICZONYM TŁEM) ================= */
+.photo{
+  padding:var(--pad-y) var(--pad-x); 
+  position: relative; overflow: hidden; /* Ogranicza tło do tej sekcji */
+}
+.photo-bg-wrap { position: absolute; inset: 0; z-index: 0; }
+.photo-bg-wrap img { width: 100%; height: 100%; object-fit: cover; }
+/* Rozjaśniony overlay z 0.94 na 0.82 */
+.photo-bg-wrap::after { content: ''; position: absolute; inset: 0; background: rgba(18, 14, 12, 0.82); }
+
+.photo .container { position: relative; z-index: 2; } 
+.photo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:30px;margin-top:50px}
+.pkg-card{
+  background:rgba(36,29,26,0.85); backdrop-filter:blur(10px); 
+  border-radius:var(--radius-lg);padding:40px;
+  border:1px solid rgba(255,255,255,.05);display:flex;flex-direction:column;
+  position:relative;overflow:hidden;transition:transform .4s,border-color .4s,box-shadow .4s;
+}
+.pkg-card::before{
+  content:'';position:absolute;top:var(--y,-999px);left:var(--x,-999px);
+  width:400px;height:400px;background:radial-gradient(circle,rgba(197,165,90,.15) 0%,transparent 60%);
+  transform:translate(-50%,-50%);opacity:0;transition:opacity .4s;pointer-events:none;z-index:0;
+}
+.pkg-card:hover{transform:translateY(-10px);border-color:rgba(197,165,90,.5);box-shadow:0 20px 40px rgba(0,0,0,.6)}
+.pkg-card:hover::before{opacity:1}
+.pkg-card>*{position:relative;z-index:1}
+.pkg-card.highlight{border-color:var(--gold); background:rgba(26, 21, 18, 0.4);}
+.pkg-name{font-family:var(--f-head);font-size:28px;color:var(--gold);margin-bottom:10px}
+.pkg-price{font-family:var(--f-head);font-size:42px;margin-bottom:30px; color:var(--text-light);}
+.pkg-list{list-style:none;flex:1;margin-bottom:30px}
+.pkg-list li{padding:10px 0;border-bottom:1px solid rgba(255,255,255,.05);font-size:14px;color:var(--text-light);}
+.pkg-list li::before{content:'✦ ';color:var(--gold);font-size:10px}
+.pkg-list .pkg-note{border-bottom:0;padding:12px 0 0;color:var(--gold);font-size:13px;font-style:italic}
+.pkg-list .pkg-note::before{content:''}
+@media(max-width:1024px){.photo-grid{grid-template-columns:1fr;max-width:500px;margin:50px auto 0}}
+
+/* ================= QUIZ / LOOKBOOK ================= */
+.lookbook{
+  padding:var(--pad-y) var(--pad-x); 
+  position: relative; overflow: hidden;
+  background: #FDFBF7;
+}
+.lookbook-bg {
+  position: absolute; inset: 0; z-index: 0; pointer-events: none;
+}
+.lookbook-bg::after {
+  content: ''; position: absolute; inset: 0;
+  background: 
+    radial-gradient(circle at 85% 15%, rgba(197, 165, 90, 0.12) 0%, transparent 40%),
+    radial-gradient(circle at 15% 85%, rgba(163, 140, 125, 0.1) 0%, transparent 40%);
+}
+
+.lookbook .container { position: relative; z-index: 2; display: flex; flex-direction: column; align-items: center; width: 100%; }
+.lookbook .sec-title { 
+  display: block; width: 100%; text-align: center; color: var(--text-dark); 
+  overflow: visible; white-space: normal;
+}
+.lookbook .sec-desc { color: var(--text-muted); text-align: center; }
+
+.quiz-box{
+  background:var(--bg-card);border-radius:var(--radius-lg);padding:50px;
+  width: 100%; max-width:900px; margin:40px auto 0; border:1px solid rgba(197,165,90,.1);
+  min-height:420px;position:relative;overflow:hidden;
+  display:flex;align-items:center;justify-content:center;flex-direction:column;
+  box-shadow:0 30px 60px rgba(0,0,0,0.15);
+}
+.quiz-step{
+  position:absolute;width:100%;padding:30px;text-align:center;
+  opacity:0;pointer-events:none;transform:translateX(40px);transition:.5s;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+}
+.quiz-step.active{opacity:1;pointer-events:auto;transform:none;position:relative;}
+.quiz-step h3{font-family:var(--f-head);font-size:28px;margin-bottom:30px; color:var(--text-light);}
+.quiz-options{display:flex;gap:16px;justify-content:center;flex-wrap:wrap; width:100%;}
+.quiz-btn{
+  background:var(--bg-dark);border:1px solid var(--gold);color:var(--gold);
+  padding:14px 28px;border-radius:var(--radius-pill);font-size:14px;font-weight:600;min-width:220px;
+  position:relative;overflow:hidden;
+}
+.quiz-btn::after{
+  content:'';position:absolute;top:0;left:-75%;width:50%;height:100%;
+  background:linear-gradient(120deg,transparent,rgba(197,165,90,.4),transparent);
+  transform:skewX(-25deg);transition:left .6s ease;
+}
+.quiz-btn:hover{
+  background:linear-gradient(135deg,#E8C96A,#C5A55A 40%,#F6E3A8 60%,#C5A55A);color:var(--bg-dark);
+}
+.quiz-btn:hover::after{left:130%}
+#qsResult { display: flex; flex-direction: column; align-items: center; text-align: center; width: 100%; }
+#qResTitle { font-family: var(--f-head); color: var(--gold); font-size: 32px; margin-bottom: 20px; }
+#qResImg { width: 160px; height: 160px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); margin-bottom: 20px; }
+.quiz-rec-intro{font-family:var(--f-accent);font-style:italic;font-size:17px;color:var(--text-light);max-width:460px;margin:0 auto 22px;line-height:1.5}
+.quiz-summary-card{width:100%;max-width:460px;margin:0 auto 22px;padding:24px;border:1px solid rgba(197,165,90,.35);border-radius:18px;background:linear-gradient(160deg,rgba(197,165,90,.10),rgba(24,20,18,.55));text-align:left}
+.quiz-summary-head{font-family:var(--f-head);font-size:20px;color:var(--gold);text-align:center;margin-bottom:18px}
+.quiz-rec-list{display:flex;flex-direction:column;gap:12px;width:100%;margin:0 auto}
+.quiz-rec-item{display:flex;align-items:center;gap:14px;padding:14px 16px;border:1px solid rgba(197,165,90,.28);border-radius:14px;background:rgba(24,20,18,.55)}
+.quiz-rec-item .rec-ico{font-size:22px;flex:0 0 auto}
+.quiz-rec-item .rec-txt{font-size:14px;line-height:1.35}
+.quiz-rec-item .rec-txt strong{display:block;font-family:var(--f-head);font-size:16px;color:var(--gold);margin-bottom:2px;font-weight:500}
+.quiz-rec-plus{font-size:11px;letter-spacing:.3em;color:var(--gold);text-transform:uppercase;margin:-4px 0}
+.quiz-summary-foot{margin-top:16px;padding-top:14px;border-top:1px dashed rgba(197,165,90,.3);text-align:center;font-size:13px;color:var(--text-muted);font-style:italic}
+.quiz-btn-unknown{border-style:dashed;opacity:.85}
+.quiz-btn-unknown:hover{opacity:1}
+.quiz-booksy-hint{font-size:13px;color:var(--text-muted);margin-bottom:18px;max-width:420px;line-height:1.5}
+.booking{background:var(--bg-light);color:var(--text-dark);padding:var(--pad-y) var(--pad-x);position:relative}
+.booking .sec-title{margin-bottom:20px}
+.booksy-note{margin-top:14px;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--text-muted);text-align:center}
+.pkg-booksy-note{margin-top:14px;font-size:11px;letter-spacing:.06em;color:rgba(255,255,255,.55);text-align:center;font-style:italic}
+@media(max-width:600px){.quiz-box{padding:30px 15px}.quiz-btn{width:100%}.quiz-step h3{font-size:24px}.quiz-rec-item{padding:12px 14px;gap:10px}.quiz-rec-item .rec-txt strong{font-size:15px}}
+
+/* ================= GALERIA SYMETRYCZNA ================= */
+.gallery{
+  background:linear-gradient(180deg,#F7F3EE 0%,#EDE6DB 50%,#F7F3EE 100%);
+  color:var(--text-dark);padding:var(--pad-y) var(--pad-x);position:relative;overflow:hidden;
+}
+.gallery::before{
+  content:'';position:absolute;inset:-20%;pointer-events:none;z-index:0;
+  background:
+    radial-gradient(ellipse 70% 50% at 20% 30%,rgba(197,165,90,.12),transparent 50%),
+    radial-gradient(ellipse 60% 40% at 80% 70%,rgba(163,140,125,.15),transparent 50%);
+  animation:ambientBoho 20s infinite alternate ease-in-out;
+}
+@keyframes ambientBoho{ 0%{transform:scale(1) translate(0,0)} 100%{transform:scale(1.05) translate(-2%,2%)} }
+.gallery .container{position:relative;z-index:1}
+.gal-filters{display:flex;flex-wrap:wrap;justify-content:center;gap:10px;margin:36px 0 40px}
+.gal-filter-btn{background:rgba(255,255,255,.6);border:1px solid rgba(24,20,18,.15);color:var(--text-dark);padding:10px 18px;border-radius:var(--radius-pill);font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;transition:.3s;backdrop-filter:blur(6px)}
+.gal-filter-btn:hover,.gal-filter-btn.active{background:linear-gradient(135deg,#E8C96A 0%,#C5A55A 40%,#F6E3A8 60%,#C5A55A 100%);background-size:200% 200%;border-color:var(--gold);color:var(--bg-dark);box-shadow:0 8px 20px rgba(197,165,90,.4), inset 0 1px 0 rgba(255,255,255,.5);animation:goldShimmer 3.5s ease-in-out infinite;}
+
+.gal-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
+.gal-item{
+  width:calc(33.333% - 14px);min-width:250px;
+  position:relative;overflow:hidden;border-radius:12px;
+  background:#1a1512;aspect-ratio:1;
+  box-shadow:0 12px 30px rgba(24,20,18,.08);
+  opacity: 0; transform: translateY(30px); transition: opacity 0.6s var(--ease), transform 0.6s var(--ease), box-shadow 0.5s;
+}
+.reveal.active .gal-item { opacity: 1; transform: translateY(0); }
+.gal-item:hover{transform:translateY(-6px) !important;box-shadow:0 20px 40px rgba(24,20,18,.15);z-index:2}
+.gal-item.hide{display:none!important}
+
+.gal-item img{
+  width:100%;height:100%;object-fit:cover;position:absolute;inset:0;
+  transition:transform 0.7s var(--ease), filter 0.6s var(--ease);
+}
+.gal-item.cine img{filter:grayscale(80%) sepia(25%) contrast(1.1) brightness(0.9);}
+.gal-item.cine:hover img{filter:grayscale(0) sepia(0) contrast(1) brightness(1);transform:scale(1.05);}
+
+.gal-tile-overlay{
+  position:absolute;inset:0;z-index:2;display:flex;align-items:center;justify-content:center;
+  background:linear-gradient(to top,rgba(24,20,18,.3),transparent 70%);
+  opacity:0;transition:opacity .4s;pointer-events:none;
+}
+.gal-item.cine:hover .gal-tile-overlay{opacity:1}
+.gal-tile-label{
+  font-size:10px;letter-spacing:.35em;text-transform:uppercase;font-weight:700;
+  color:#fff;border:1px solid rgba(255,255,255,.5);padding:12px 22px;border-radius:100px;
+  background:rgba(197,165,90,.35);backdrop-filter:blur(8px);
+}
+
+.ba-container { width: calc(50% - 10px); min-width: 300px; aspect-ratio: 4/3; }
+.ba-wrap{position:absolute;inset:0}
+.ba-wrap .ba-img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:none!important}
+.ba-wrap .before{z-index:2;clip-path:polygon(0 0,50% 0,50% 100%,0 100%)}
+.ba-wrap .after{z-index:1}
+.ba-wrap .ba-slider{position:absolute;inset:0;opacity:0;z-index:5;width:100%;height:100%;cursor:ew-resize}
+.ba-wrap .ba-line{position:absolute;top:0;left:50%;bottom:0;width:2px;background:#fff;z-index:4;pointer-events:none;box-shadow:0 0 10px rgba(0,0,0,.4)}
+.ba-wrap .ba-btn{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:40px;height:40px;background:#fff;border:2px solid var(--gold);border-radius:50%;display:flex;align-items:center;justify-content:center;color:var(--gold);font-weight:bold;font-size:16px}
+.ba-wrap .ba-labels{position:absolute;bottom:16px;left:0;right:0;display:flex;justify-content:space-between;padding:0 16px;z-index:4;pointer-events:none}
+.ba-wrap .ba-labels span{background:rgba(0,0,0,.55);color:#fff;padding:5px 12px;border-radius:20px;font-size:10px;letter-spacing:0.1em;text-transform:uppercase}
+#modalBaContainer{position:relative;width:100%;height:100%;min-height:400px;border:none;border-radius:0}
+#modalBaContainer .ba-wrap{position:absolute;inset:0}
+/* Na urządzeniach mobilnych galeria pozostaje widoczna niezależnie od animacji scrolla. */
+@media(max-width:900px){
+  .gallery .container.reveal{opacity:1;transform:none}
+  .gallery .gal-item{opacity:1;transform:none}
+  .gal-grid{gap:15px}
+  .gal-item{width:calc(50% - 8px)}
+  .ba-container{width:100%}
+}
+@media(max-width:550px){.gal-grid{gap:20px}.gal-item{width:100%}}
+
+/* Lightbox */
+.lightbox{position:fixed;inset:0;z-index:100500;background:rgba(10,8,7,.96);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:.35s;padding:20px}
+.lightbox.open{opacity:1;visibility:visible}
+.lightbox img{max-width:min(92vw,1100px);max-height:88vh;object-fit:contain;border-radius:12px;border:1px solid rgba(197,165,90,.3);box-shadow:0 30px 80px rgba(0,0,0,.6)}
+.lightbox-close{position:absolute;top:24px;right:28px;font-size:36px;color:var(--gold);width:48px;height:48px;border-radius:50%;background:rgba(255,255,255,.06);display:flex;align-items:center;justify-content:center}
+.lightbox-nav{position:absolute;top:50%;transform:translateY(-50%);font-size:40px;color:var(--gold);padding:20px;opacity:.8;display:flex;align-items:center;justify-content:center}
+.lightbox-nav:hover{opacity:1}
+.lightbox-prev{left:10px}.lightbox-next{right:10px}
+
+/* ================= OPINIE & REZERWACJA ================= */
+.reviews{background:var(--bg-dark);padding:var(--pad-y) 0;text-align:center;overflow:hidden}
+.rev-score{font-family:var(--f-head);font-size:80px;color:var(--gold);line-height:1}
+.rev-wrapper{overflow:hidden;padding:30px 0 40px;position:relative}
+.rev-wrapper::before,.rev-wrapper::after{content:'';position:absolute;top:0;bottom:0;width:80px;z-index:2;pointer-events:none}
+.rev-wrapper::before{left:0;background:linear-gradient(to right,var(--bg-dark),transparent)}
+.rev-wrapper::after{right:0;background:linear-gradient(to left,var(--bg-dark),transparent)}
+.rev-slider{display:flex;gap:20px;width:max-content;animation:scrollReviews 70s linear infinite}
+.rev-slider:hover{animation-play-state:paused}
+@keyframes scrollReviews{to{transform:translateX(calc(-50% - 10px))}}
+.rev-card{flex:0 0 380px;background:var(--bg-card);border-radius:var(--radius-lg);padding:36px;text-align:left;border:1px solid rgba(255,255,255,.05);white-space:normal}
+.rev-card-stars{color:var(--gold);margin-bottom:16px}
+.rev-card-text{font-family:var(--f-accent);font-style:italic;font-size:18px;margin-bottom:24px;line-height:1.6}
+.rev-card-author{font-family:var(--f-head);color:var(--gold)}
+.rev-card-source{font-size:10px;letter-spacing:.2em;text-transform:uppercase;color:var(--text-muted);margin-top:4px}
+
+.booking{background:var(--bg-light);color:var(--text-dark);padding:var(--pad-y) var(--pad-x)}
+.book-box{background:#fff;border-radius:var(--radius-lg);max-width:900px;margin:50px auto 0;overflow:hidden;box-shadow:0 20px 60px rgba(0,0,0,.05)}
+.b-steps{display:flex;background:#fafafa;border-bottom:1px solid #eee}
+.b-step{flex:1;text-align:center;padding:18px 8px;font-size:11px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:#aaa;transition:.3s}
+.b-step.active{color:var(--gold);border-bottom:3px solid var(--gold);background:#fff}
+.b-panel{padding:40px;display:none}
+.b-panel.active{display:block}
+.svc-list-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.svc-pick{border:1px solid #eee;border-radius:var(--radius-md);padding:18px;cursor:pointer;transition:.3s}
+.svc-pick:hover,.svc-pick.selected{border-color:var(--gold)}
+.svc-pick.selected{background:var(--bg-dark);color:#fff}
+.svc-pick.selected .svc-pick-pr{color:var(--gold)}
+.svc-pick-nm{font-family:var(--f-head);font-size:17px;margin-bottom:4px}
+.svc-pick-pr{font-size:13px;font-weight:600;color:#666}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.form-input{width:100%;padding:14px 18px;border:1px solid #ddd;border-radius:8px;font:inherit;font-size:14px;transition:.3s}
+.form-input:focus{outline:none;border-color:var(--gold)}
+.form-full{grid-column:1/-1}
+.b-nav{display:flex;justify-content:space-between;padding:20px 40px;background:#fafafa;border-top:1px solid #eee}
+@media(max-width:600px){.form-grid{grid-template-columns:1fr}.b-panel{padding:24px 16px}}
+
+.contact{background:var(--bg-dark);padding:var(--pad-y) var(--pad-x);text-align:center}
+.soc-container{display:flex;justify-content:center;gap:24px;margin:40px 0;flex-wrap:wrap}
+.soc-btn{width:68px;height:68px;border-radius:50%;border:1px solid rgba(197,165,90,.3);overflow:hidden;display:flex;align-items:center;justify-content:center;transition:all .4s var(--ease)}
+.soc-btn img{width:100%;height:100%;object-fit:cover;border-radius:50%;transition:transform .4s}
+.soc-btn:hover{border-color:var(--gold);transform:translateY(-4px);box-shadow:0 10px 20px rgba(197,165,90,.2)}
+.soc-btn:hover img{transform:scale(1.1)}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;background:var(--bg-card);padding:40px;border-radius:var(--radius-lg);max-width:1000px;margin:40px auto 0;text-align:left;border:1px solid rgba(255,255,255,.05)}
+.contact-info h3{font-family:var(--f-head);color:var(--gold);font-size:28px;margin-bottom:20px}
+.contact-info p{margin-bottom:18px;font-size:15px}
+.contact-info strong{display:block;font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--text-muted);margin-bottom:4px}
+.contact-info a{transition:color .3s}
+.contact-info a:hover{color:var(--gold)}
+.contact-map iframe{width:100%;min-height:280px;border:0;border-radius:var(--radius-md)}
+@media(max-width:800px){.contact-grid{grid-template-columns:1fr;text-align:center}}
+
+.footer{background:#0d0b0a;text-align:center;padding-top:70px;position:relative;overflow:hidden}
+.footer-lines{position:absolute;inset:0;pointer-events:none}
+.footer-lines::before,.footer-lines::after{content:'';position:absolute;width:200%;height:1px;background:rgba(197,165,90,.12);top:50%;left:-50%}
+.footer-lines::before{transform:rotate(12deg)}.footer-lines::after{transform:rotate(-12deg)}
+.footer-content{position:relative;z-index:2;padding-bottom:50px}
+.footer-logo-wrap{width:76px;height:76px;margin:0 auto 16px;border-radius:50%;padding:4px;border:1px solid var(--gold)}
+.footer-logo-wrap .img-wrapper{width:100%;height:100%;border-radius:50%}
+.footer h3{font-family:var(--f-head);color:var(--gold);font-size:24px;margin-bottom:8px}
+.footer p{font-size:13px;color:#888}
+.footer-bottom{background:var(--gold);color:#0d0b0a;padding:14px;font-size:11px;font-weight:600;position:relative;z-index:2}
+
+/* ================= CHATBOT & MOBILE BTN ================= */
+.mobile-call-btn{display:none;position:fixed;bottom:30px;left:30px;z-index:99990;background:var(--gold);color:var(--bg-dark);padding:14px 22px;border-radius:var(--radius-pill);font-size:12px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;box-shadow:0 10px 25px rgba(0,0,0,.4);align-items:center;gap:8px;text-decoration:none}
+#chatbot-fab{position:fixed;bottom:30px;right:30px;z-index:99990;width:58px;height:58px;border-radius:50%;background:var(--gold);color:var(--bg-dark);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 25px rgba(0,0,0,.4);transition:all .3s var(--ease)}
+#chatbot-fab:hover{transform:scale(1.08);background:var(--gold-hover)}
+#chatbot-window{position:fixed;bottom:100px;right:30px;z-index:99991;width:360px;max-width:calc(100vw - 40px);height:480px;max-height:calc(100vh - 120px);background:var(--bg-card);border:1px solid rgba(197,165,90,.3);border-radius:var(--radius-md);display:flex;flex-direction:column;opacity:0;pointer-events:none;transform:translateY(16px) scale(.96);transition:.4s;overflow:hidden}
+#chatbot-window.open{opacity:1;pointer-events:auto;transform:none}
+#chatbot-header{padding:14px 18px;background:var(--bg-dark);display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid rgba(197,165,90,.1)}
+#chatbot-header strong{display:block;font-size:14px}#chatbot-header span{font-size:10px;color:var(--gold);letter-spacing:.08em;text-transform:uppercase}
+#chatbot-close{font-size:24px;color:var(--text-muted);transition:.3s}
+#chatbot-close:hover{color:var(--gold)}
+#chatbot-messages{flex:1;overflow-y:auto;padding:16px;display:flex;flex-direction:column;gap:12px;font-size:14px;scroll-behavior:smooth}
+.chat-bubble{max-width:85%;padding:12px 14px;border-radius:14px;line-height:1.5}
+.bot-bubble{background:var(--bg-dark);color:var(--text-light);align-self:flex-start;border-bottom-left-radius:4px;border:1px solid rgba(255,255,255,.03)}
+.user-bubble{background:var(--gold);color:var(--bg-dark);align-self:flex-end;border-bottom-right-radius:4px;font-weight:500}
+.chat-btn-inline{display:inline-block;margin-top:10px;padding:8px 14px;border:1px solid var(--gold);color:var(--gold);border-radius:20px;font-size:12px;font-weight:600;transition:.3s;text-align:center;position:relative;overflow:hidden;}
+.chat-btn-inline:hover{background:linear-gradient(135deg,#E8C96A,#C5A55A 40%,#F6E3A8 60%,#C5A55A);color:var(--bg-dark)}
+.chat-quick-replies{display:flex;flex-wrap:wrap;gap:8px}
+.chat-qr-btn{border:1px solid var(--gold);color:var(--gold);padding:8px 12px;border-radius:20px;font-size:12px;background:transparent;transition:.3s;font-family:inherit;position:relative;overflow:hidden;}
+.chat-qr-btn:hover{background:linear-gradient(135deg,#E8C96A,#C5A55A 40%,#F6E3A8 60%,#C5A55A);color:var(--bg-dark)}
+#chatbot-input-area{display:flex;padding:12px;background:var(--bg-dark);gap:8px;border-top:1px solid rgba(197,165,90,.1)}
+#chatbot-input{flex:1;background:transparent;border:0;color:#fff;font:inherit;font-size:14px}
+#chatbot-input:focus{outline:none}
+#chatbot-send{width:40px;height:40px;border-radius:50%;background:var(--gold);display:flex;align-items:center;justify-content:center;transition:.3s}
+#chatbot-send:hover{background:var(--gold-hover);transform:scale(1.05)}
+#chatbot-messages::-webkit-scrollbar{width:6px}
+#chatbot-messages::-webkit-scrollbar-thumb{background:rgba(197,165,90,.3);border-radius:10px}
+@media(max-width:600px){#chatbot-fab{right:20px;bottom:20px}#chatbot-window{right:20px;bottom:90px}.mobile-call-btn{display:flex;left:20px;bottom:20px}}
+
+/* ================= MOBILNA OPTYMALIZACJA PREMIUM =================
+   Wszystkie reguły poniżej działają wyłącznie na tabletach/telefonach.
+   Wersja desktopowa pozostaje bez zmian. */
+@media(max-width:1000px){
+  /* Pływający pasek taki jak na komputerze */
+  .nav{
+    top:calc(10px + env(safe-area-inset-top));left:50%;width:calc(100% - 24px);max-width:720px;
+    transform:translateX(-50%);border-radius:var(--radius-pill);padding:8px 14px 8px 10px;
+    background:rgba(24,20,18,.86);border:1px solid rgba(197,165,90,.4);
+    box-shadow:0 12px 32px rgba(0,0,0,.42),0 0 24px rgba(197,165,90,.08);
+  }
+  .nav.scrolled{background:rgba(17,14,12,.94);border-color:rgba(197,165,90,.55)}
+  .nav.nav-hidden{transform:translateX(-50%) translateY(calc(-100% - 30px));opacity:0}
+  .nav-logo .img-wrapper{width:44px;height:44px}
+  .burger{width:28px;height:20px;margin-right:2px}
+  .burger span{height:2px;background:linear-gradient(90deg,#A77D2D,#F2D98B,#B58B35);box-shadow:0 0 5px rgba(197,165,90,.25)}
+
+  /* Pełnoekranowe menu — mniejsze, czytelne i animowane */
+  .mob-nav{
+    padding:calc(88px + env(safe-area-inset-top)) 24px calc(28px + env(safe-area-inset-bottom));
+    gap:2px;overflow-y:auto;justify-content:center;
+    background:
+      radial-gradient(circle at 50% 20%,rgba(197,165,90,.11),transparent 34%),
+      linear-gradient(180deg,#181412 0%,#0d0b0a 100%);
+    opacity:0;visibility:hidden;transform:translateY(-18px) scale(.985);
+    transform-origin:top center;transition:opacity .35s ease,transform .45s var(--ease),visibility .35s;
+  }
+  .mob-nav.open{opacity:1;visibility:visible;transform:none}
+  .mob-nav a:not(.btn){
+    display:flex;align-items:center;justify-content:center;width:min(100%,320px);
+    padding:9px 18px;font-size:clamp(23px,7vw,30px);line-height:1.08;
+    opacity:0;transform:translateY(-14px);transition:opacity .35s ease,transform .45s var(--ease),color .25s;
+  }
+  .mob-nav a:not(.btn):hover{color:var(--gold)}
+  .mob-nav .btn{
+    width:min(100%,290px);min-height:50px;margin-top:14px!important;padding:14px 24px!important;
+    font-family:var(--f-body);font-size:11px!important;line-height:1!important;letter-spacing:.18em;
+    white-space:nowrap;opacity:0;transform:translateY(-12px);
+    transition:opacity .35s ease,transform .45s var(--ease),box-shadow .3s;
+  }
+  .mob-nav.open a{opacity:1;transform:none}
+  .mob-nav.open a:nth-child(1){transition-delay:.05s}
+  .mob-nav.open a:nth-child(2){transition-delay:.09s}
+  .mob-nav.open a:nth-child(3){transition-delay:.13s}
+  .mob-nav.open a:nth-child(4){transition-delay:.17s}
+  .mob-nav.open a:nth-child(5){transition-delay:.21s}
+  .mob-nav.open a:nth-child(6){transition-delay:.25s}
+  .mob-nav.open a:nth-child(7){transition-delay:.29s}
+
+  /* Złote, metaliczne przyciski kontaktowe z ruchomym połyskiem */
+  .mobile-call-btn,#chatbot-fab{
+    background:linear-gradient(135deg,#9B7428 0%,#D5B65E 25%,#FFF0AD 48%,#B78A31 69%,#E2C873 100%);
+    background-size:230% 230%;border:1px solid rgba(255,235,164,.72);
+    box-shadow:0 12px 28px rgba(0,0,0,.42),0 5px 18px rgba(197,165,90,.32),inset 0 1px 0 rgba(255,255,255,.7);
+    animation:goldShimmer 3.6s ease-in-out infinite;overflow:hidden;
+  }
+  .mobile-call-btn::after,#chatbot-fab::after{
+    content:'';position:absolute;top:0;left:-80%;width:52%;height:100%;
+    background:linear-gradient(115deg,transparent,rgba(255,255,255,.78),transparent);
+    transform:skewX(-24deg);animation:btnShine 3s ease-in-out infinite;pointer-events:none;
+  }
+  .mobile-call-btn{left:16px;bottom:calc(16px + env(safe-area-inset-bottom));padding:13px 19px;min-height:52px;gap:9px}
+  .mobile-call-btn svg{width:18px;height:18px;position:relative;z-index:1;flex:0 0 auto}
+  .mobile-call-btn span,#chatbot-fab svg{position:relative;z-index:1}
+  #chatbot-fab{right:16px;bottom:calc(16px + env(safe-area-inset-bottom));width:58px;height:58px}
+  #chatbot-fab:hover{
+    background:linear-gradient(135deg,#9B7428 0%,#D5B65E 25%,#FFF0AD 48%,#B78A31 69%,#E2C873 100%);
+    background-size:230% 230%;transform:scale(1.04)
+  }
+  .mobile-call-btn,#chatbot-fab{transition:opacity .3s,transform .35s var(--ease),box-shadow .3s}
+  body.menu-open .mobile-call-btn,body.menu-open #chatbot-fab,
+  body.menu-open #chatbot-window{opacity:0;pointer-events:none;transform:translateY(18px)}
+
+  #chatbot-window{
+    right:12px;bottom:calc(86px + env(safe-area-inset-bottom));width:calc(100vw - 24px);
+    height:min(520px,calc(100dvh - 115px - env(safe-area-inset-top)));
+    max-height:none;border-radius:20px;box-shadow:0 24px 70px rgba(0,0,0,.62);
+  }
+}
+
+@media(max-width:600px){
+  :root{--pad-x:18px;--pad-y:68px}
+
+  /* Hero */
+  .hero{height:100svh;min-height:620px;padding:96px 18px 92px}
+  .hero-bg{inset:0}
+  .hero h1{font-size:clamp(47px,15vw,66px);line-height:1;margin-bottom:20px;max-width:100%}
+  .hero p{font-size:clamp(18px,5.2vw,21px)!important;line-height:1.42;margin-bottom:30px!important;max-width:330px!important}
+  .hero-btns{width:100%;gap:12px}
+  .hero .btn{width:min(100%,320px);padding:15px 20px}
+
+  /* Wspólna typografia i odstępy sekcji */
+  .sec-title{font-size:clamp(36px,11vw,46px);line-height:1.06}
+  .sec-desc{font-size:18px;line-height:1.45}
+  .eyebrow{letter-spacing:.3em;margin-bottom:15px}
+  .about{margin-top:-42px;border-radius:30px 30px 0 0;padding-top:72px}
+  .about-grid{gap:34px}
+  .about-txt p{font-size:14px;line-height:1.75}
+
+  /* Oferta */
+  .svc-grid{margin-top:40px;gap:48px}
+  .svc-col h3{font-size:28px;margin-bottom:16px}
+  .svc-video-banner{height:105px;margin-bottom:18px}
+  .svc-item{gap:12px;padding:16px 0}
+  .svc-item:hover{padding-left:7px}
+  .svc-info{min-width:0;gap:5px}
+  .svc-info h4{font-size:16px;line-height:1.25}
+  .svc-info p{font-size:12px;line-height:1.35}
+  .svc-price{font-size:18px}
+
+  /* Modale usług */
+  .modal-overlay{padding:12px;align-items:flex-end}
+  .modal-content{max-height:calc(100dvh - 24px);overflow-y:auto;border-radius:22px 22px 16px 16px}
+  .modal-img{min-height:215px}
+  .modal-text{padding:27px 20px 24px}
+  .modal-text h3{font-size:27px}
+  .modal-close{top:10px;right:10px}
+
+  /* Pakiety fotograficzne */
+  .photo-grid{margin-top:36px}
+  .pkg-card{padding:28px 22px}
+  .pkg-name{font-size:26px}
+  .pkg-price{font-size:36px;margin-bottom:22px}
+
+  /* Lookbook */
+  .quiz-box{padding:26px 14px;min-height:410px;margin-top:30px}
+  .quiz-step{padding:20px 10px}
+  .quiz-step h3{font-size:23px;line-height:1.25;margin-bottom:24px}
+  .quiz-options{gap:11px}
+  .quiz-btn{min-width:0;width:100%;padding:13px 16px}
+  #qResImg{width:135px;height:135px}
+
+  /* Galeria: kompaktowe filtry przesuwane palcem */
+  .gal-filters{
+    flex-wrap:nowrap;justify-content:flex-start;overflow-x:auto;overscroll-behavior-inline:contain;
+    scroll-snap-type:x proximity;margin:28px -18px 30px;padding:0 18px 9px;
+    scrollbar-width:none;-webkit-overflow-scrolling:touch;
+  }
+  .gal-filters::-webkit-scrollbar{display:none}
+  .gal-filter-btn{flex:0 0 auto;scroll-snap-align:start;padding:10px 16px}
+  .gal-grid{gap:16px}
+  .gal-item{min-width:0;border-radius:14px}
+  .ba-container{aspect-ratio:4/3}
+  .lightbox{padding:12px}
+  .lightbox-close{top:12px;right:12px}
+  .lightbox-nav{font-size:30px;padding:12px}
+  .lightbox-prev{left:0}.lightbox-next{right:0}
+
+  /* Opinie */
+  .rev-score{font-size:66px}
+  .rev-wrapper{padding-top:22px}
+  .rev-card{flex-basis:min(84vw,330px);padding:28px 24px}
+  .rev-card-text{font-size:17px}
+
+  /* Rezerwacja */
+  .book-box{margin-top:30px;border-radius:20px}
+  .b-step{padding:15px 5px;font-size:9px;letter-spacing:.06em}
+  .b-panel{padding:25px 16px}
+  .svc-list-grid{grid-template-columns:1fr}
+  .b-nav{padding:15px 16px;gap:10px}
+  .b-nav .btn{padding:13px 18px;letter-spacing:.12em}
+
+  /* Kontakt i stopka */
+  .soc-container{gap:14px;margin:30px 0}
+  .soc-btn{width:58px;height:58px}
+  .contact-grid{padding:25px 18px;gap:28px;margin-top:30px}
+  .contact-map iframe{min-height:240px}
+  .footer{padding-top:58px}
+  .footer-content{padding:0 18px 42px}
+
+  /* Bezpieczne dolne miejsce pod przyciski telefonu */
+  .footer-bottom{padding:14px 14px calc(86px + env(safe-area-inset-bottom))}
+}
+
+@media(max-width:370px){
+  .mob-nav{padding-left:18px;padding-right:18px}
+  .mob-nav a:not(.btn){font-size:23px;padding-top:7px;padding-bottom:7px}
+  .hero h1{font-size:45px}
+  .mobile-call-btn{padding:12px 15px;font-size:10px}
+}
+
+/* Paginacja galerii na komputerze i telefonie. */
+.gal-load-more{
+  display:flex;align-items:center;justify-content:center;width:min(100%,280px);
+  margin:28px auto 0;padding:14px 22px;border:1px solid var(--gold);border-radius:var(--radius-pill);
+  color:var(--bg-dark);background:linear-gradient(135deg,#A57B2D,#D7B961 30%,#FFF0AD 50%,#B78A31 72%,#E2C873);
+  background-size:220% 220%;box-shadow:0 10px 24px rgba(197,165,90,.25),inset 0 1px 0 rgba(255,255,255,.65);
+  font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+  animation:goldShimmer 3.6s ease-in-out infinite
+}
+.gal-load-more[hidden]{display:none!important}
+.gal-item.mobile-page-hide{display:none!important}
+
+@media(max-width:600px){
+  /* Pełna nawigacja w jednym rzędzie — układ taki sam jak na komputerze. */
+  .nav{border-radius:var(--radius-pill);padding:6px 7px}
+  .nav-in{display:flex;align-items:center;justify-content:space-between;gap:5px}
+  .nav-logo{display:block;flex:0 0 auto}
+  .nav-logo .img-wrapper{width:34px;height:34px}
+  .nav-links{
+    display:flex!important;align-items:center;justify-content:center;flex:1 1 auto;
+    gap:clamp(3.5px,1.15vw,7px);min-width:0;width:auto;margin:0 2px 0 0;padding:0;border:0
+  }
+  .nav-links li{min-width:0;text-align:center;flex:0 1 auto}
+  .nav-links a{
+    display:block;padding:3px 0;font-size:clamp(6.6px,2vw,8.2px);
+    letter-spacing:.05em;line-height:1;white-space:nowrap
+  }
+  .nav-links a::after{display:none}
+  .nav-cta{
+    display:inline-flex!important;align-items:center;justify-content:center;flex:0 0 auto;
+    min-height:34px;padding:8px 9px;font-size:clamp(6.2px,1.8vw,7.2px);
+    letter-spacing:.07em;white-space:nowrap
+  }
+  .burger{display:none!important}
+  .hero{padding-top:102px}
+
+  /* Dwie miniatury w rzędzie + stopniowe pokazywanie kolejnych prac. */
+  .gal-grid{gap:10px}
+  .gal-item,.ba-container{
+    width:calc(50% - 5px)!important;min-width:0;aspect-ratio:1;border-radius:11px
+  }
+  .gal-load-more{
+    display:flex;align-items:center;justify-content:center;width:min(100%,280px);
+    margin:24px auto 0;padding:14px 22px;border:1px solid var(--gold);border-radius:var(--radius-pill);
+    color:var(--bg-dark);background:linear-gradient(135deg,#A57B2D,#D7B961 30%,#FFF0AD 50%,#B78A31 72%,#E2C873);
+    background-size:220% 220%;box-shadow:0 10px 24px rgba(197,165,90,.25),inset 0 1px 0 rgba(255,255,255,.65);
+    font-size:11px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;
+    animation:goldShimmer 3.6s ease-in-out infinite
+  }
+  .gal-load-more[hidden]{display:none!important}
+
+  /* Rezerwacja: usługi w dwóch kompaktowych, kwadratowych kolumnach. */
+  .svc-list-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+  .svc-pick{
+    aspect-ratio:1;min-width:0;padding:12px 9px;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;text-align:center;border-radius:14px
+  }
+  .svc-pick-nm{font-size:14px;line-height:1.2;margin-bottom:7px}
+  .svc-pick-pr{font-size:11px;line-height:1.25}
+}
+
+@media(max-width:350px){
+  .nav{width:calc(100% - 10px);padding:5px 6px}
+  .nav-in{gap:3px}
+  .nav-logo .img-wrapper{width:30px;height:30px}
+  .nav-links{gap:2.5px;margin-right:0}
+  .nav-links a{font-size:6.1px;letter-spacing:.03em}
+  .nav-cta{min-height:30px;padding:6px 7px;font-size:5.7px;letter-spacing:.04em}
+  .hero{padding-top:96px}
+}
+</style>
+<script>/* === KONFIGURACJA BOOKSY — w tym miejscu wystarczy podmienić link, aby zaktualizować wszystkie przyciski na stronie. === */
+window.BOOKSY_URL='https://booksy.com/pl-pl/255262_joanna-kamasinska-makeup-hair-foto_makijaz_25060_konstantynow-lodzki';
+
+/* Obsługa błędów mediów jest dostępna od początku ładowania dokumentu. */
+function handleImgError(img,n){
+  img.style.display='none';
+  const w=img.parentElement;
+  if(!w||w.querySelector('.img-error-state'))return;
+  const d=document.createElement('div');
+  d.className='img-error-state';
+  d.innerHTML='<span>Brak pliku</span><strong>'+(n||'')+'</strong>';
+  w.appendChild(d);
+}
+function handleVideoError(v){
+  v.style.display='none';
+  const w=v.parentElement;
+  if(!w)return;
+  const i=document.createElement('img');
+  i.src='img/2.jpg';i.alt='Joanna';
+  i.onerror=function(){handleImgError(this,'2.jpg')};
+  w.appendChild(i);
+}
+</script>
+</head>
+<body>
+
+<div class="cursor-dot" id="cursor-dot"></div>
+<div class="cursor-outline" id="cursor-outline"></div>
+
+<div class="loader-curtain" id="loader">
+  <div class="curtain-panel curtain-left"></div>
+  <div class="curtain-panel curtain-right"></div>
+  <div class="loader-content">
+    <div class="img-wrapper" style="border-radius:50%;width:80px;height:80px;border:2px solid var(--gold)">
+      <img src="img/logo.jpg" alt="JK" onerror="handleImgError(this,'logo.jpg')">
+    </div>
+  </div>
+</div>
+
+<nav class="nav" id="nav">
+  <div class="nav-in">
+    <a href="#top" class="nav-logo"><div class="img-wrapper"><img src="img/logo.jpg" alt="JK" onerror="handleImgError(this,'logo.jpg')"></div></a>
+    <ul class="nav-links">
+      <li><a href="#o-mnie">O mnie</a></li>
+      <li><a href="#uslugi">Oferta</a></li>
+      <li><a href="#sesje">Sesje Foto</a></li>
+      <li><a href="#lookbook-sec">Lookbook</a></li>
+      <li><a href="#galeria">Galeria</a></li>
+      <li><a href="#opinie">Opinie</a></li>
+    </ul>
+    <a href="#" target="_blank" rel="noopener" class="nav-cta magnetic booksy-link">Umów wizytę</a>
+    <button class="burger" id="burger" aria-label="Menu"><span></span><span></span><span></span></button>
+  </div>
+</nav>
+<div class="mob-nav" id="mob">
+  <a href="#o-mnie">O mnie</a><a href="#uslugi">Oferta</a><a href="#sesje">Sesje Foto</a>
+  <a href="#lookbook-sec">Lookbook</a><a href="#galeria">Galeria</a><a href="#opinie">Opinie</a>
+  <a href="#" target="_blank" rel="noopener" class="btn btn-gold booksy-link" style="margin-top:16px">Umów wizytę</a>
+</div>
+
+<section class="hero" id="top">
+  <div class="hero-bg" id="heroBgParallax"><img src="img/1.jpg" alt="Salon" onerror="handleImgError(this,'1.jpg')"></div>
+  <div class="hero-overlay"></div>
+  <h1 class="reveal">Joanna Kamasińska</h1>
+  <p class="reveal" style="font-family: var(--f-accent); font-size: clamp(20px, 2.5vw, 28px); font-style: italic; color: var(--text-muted); margin-bottom: 40px; max-width: 700px; position:relative; z-index:2;">
+    Profesjonalny makijaż, stylizacja włosów i wyjątkowe sesje fotograficzne.
+  </p>
+  <div class="hero-btns reveal">
+    <a href="#" target="_blank" rel="noopener" class="btn btn-gold magnetic booksy-link">Rezerwacja Online</a>
+    <a href="#uslugi" class="btn btn-outline magnetic">Zobacz ofertę</a>
+  </div>
+</section>
+
+<!-- O MNIE (TYLKO TŁO ZDJ. 1 - BEZ ZMIAN W ANIMACJACH) -->
+<section class="about container reveal" id="o-mnie">
+  <div class="vert-marquee">
+    <div class="vert-marquee-track">
+      <span>MAKEUP • HAIR • BEAUTY • EDITORIAL • MAKEUP • HAIR • BEAUTY • EDITORIAL • </span>
+      <span>MAKEUP • HAIR • BEAUTY • EDITORIAL • MAKEUP • HAIR • BEAUTY • EDITORIAL • </span>
+    </div>
+  </div>
+  
+  <div class="about-grid">
+    <div>
+      <span class="eyebrow">01 — O mnie</span>
+      <h2 class="sec-title scroll-fill-text" id="scrollText">Twoje piękno,<br><em>nasza pasja.</em></h2>
+      <div class="about-txt">
+        <p>Od wielu lat towarzyszę kobietom w ich najważniejszych chwilach. Jako wizażystka, stylistka fryzur i fotograf tworzę spójne, przemyślane obrazy piękna — od subtelnego makijażu okolicznościowego po pełne sesje editorial.</p>
+        <p>Specjalizuję się w stylizacjach ślubnych, falach objętościowych oraz profesjonalnym zabiegu nanoplastii z dojazdem. Zapraszam do mojego studia.</p>
+      </div>
+      <img src="img/logo.jpg" alt="" style="width:60px;height:60px;border-radius:50%;margin-top:28px;opacity:.8" onerror="this.style.display='none'">
+    </div>
+    <div class="img-wrapper about-img reveal-mask reveal">
+      <div class="parallax-wrap">
+        <video src="img/joanna.mp4" poster="img/2.jpg" autoplay loop muted playsinline class="smooth-video" onloadeddata="this.style.opacity=1" onerror="handleVideoError(this)"></video>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="brands-ticker reveal">
+  <div class="brands-track">
+    <span>Dior</span><span class="dot">✦</span><span>Charlotte Tilbury</span><span class="dot">✦</span><span>MAC</span><span class="dot">✦</span><span>Tom Ford</span><span class="dot">✦</span><span>Chanel</span><span class="dot">✦</span><span>Estée Lauder</span><span class="dot">✦</span><span>YSL</span><span class="dot">✦</span><span>Huda Beauty</span><span class="dot">✦</span>
+    <span>Dior</span><span class="dot">✦</span><span>Charlotte Tilbury</span><span class="dot">✦</span><span>MAC</span><span class="dot">✦</span><span>Tom Ford</span><span class="dot">✦</span><span>Chanel</span><span class="dot">✦</span><span>Estée Lauder</span><span class="dot">✦</span><span>YSL</span><span class="dot">✦</span><span>Huda Beauty</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<div class="pin-wrap">
+<section class="services" id="uslugi">
+  <canvas id="ofertaParticles"></canvas>
+  <div class="container reveal">
+    <span class="eyebrow">02 — Oferta</span>
+    <h2 class="sec-title">Makijaż & <em>Włosy</em></h2>
+    <div class="sec-desc">Kliknij usługę, by poznać szczegóły.</div>
+    
+    <div class="svc-grid">
+      <div class="svc-col">
+        <h3>Makijaż</h3>
+        <div class="svc-video-banner">
+          <video src="img/gvideo2.mp4" poster="img/filmu2.jpg" autoplay loop muted playsinline class="smooth-video" onerror="this.style.display='none'"></video>
+        </div>
+        <div class="svc-item magnetic" onclick="openServiceModal('okolicznosciowy')"><div class="svc-info"><span class="svc-arrow">→</span><div><h4>Okolicznościowy</h4><p>1h 30min</p></div></div><div class="svc-price">300 zł</div></div>
+        <div class="svc-item magnetic" onclick="openServiceModal('sesyjny')"><div class="svc-info"><span class="svc-arrow">→</span><div><h4>Do sesji / reklamy / filmu</h4><p>1h 15min</p></div></div><div class="svc-price">300 zł</div></div>
+        <div class="svc-item magnetic" onclick="openServiceModal('slubny')"><div class="svc-info"><span class="svc-arrow">→</span><div><h4>Ślubny / próbny</h4><p>1h 30min</p></div></div><div class="svc-price">350 zł</div></div>
+        <div class="svc-item magnetic" onclick="openServiceModal('panmlody')"><div class="svc-info"><span class="svc-arrow">→</span><div><h4>Korekta Pana Młodego</h4><p>30 min</p></div></div><div class="svc-price">100 zł</div></div>
+        <div class="svc-item magnetic" onclick="openServiceModal('sylwester')"><div class="svc-info"><span class="svc-arrow">→</span><div><h4>Sylwestrowy</h4><p>Zależy od dodatków</p></div></div><div class="svc-price">od 300 zł</div></div>
+      </div>
+      
+      <div class="svc-col">
+        <h3>Włosy & Pakiety</h3>
+        <div class="svc-video-banner">
+          <video src="img/gvideo1.mp4" poster="img/hollywood1.jpg" autoplay loop muted playsinline class="smooth-video" onerror="this.style.display='none'"></video>
+        </div>
+        <div class="svc-item magnetic" onclick="openServiceModal('pakietoko')"><div class="svc-info"><span class="svc-arrow">→</span><div><h4>Makijaż + fale objętościowe</h4><p>Okolicznościowy (3h)</p></div></div><div class="svc-price">od 600 zł</div></div>
+        <div class="svc-item magnetic" onclick="openServiceModal('pakietslub')"><div class="svc-info"><span class="svc-arrow">→</span><div><h4>Makijaż ślubny + fale</h4><p>Ślubny (3h)</p></div></div><div class="svc-price">od 630 zł</div></div>
+        <div class="svc-item magnetic" onclick="openServiceModal('hollywood')"><div class="svc-info"><span class="svc-arrow">→</span><div><h4>Fale objętościowe / Hollywood</h4><p>W zależności od długości</p></div></div><div class="svc-price">od 300 zł</div></div>
+        <div class="svc-item magnetic" onclick="openServiceModal('upiecia')"><div class="svc-info"><span class="svc-arrow">→</span><div><h4>Upięcie</h4><p>Czas ok. 2-2.5h</p></div></div><div class="svc-price">od 400 zł</div></div>
+        <div class="svc-item magnetic" onclick="openServiceModal('upieciezebrkowe')"><div class="svc-info"><span class="svc-arrow">→</span><div><h4>Upięcie metodą żeberkową</h4><p>Czas zależny od trudności</p></div></div><div class="svc-price">od 400 zł</div></div>
+        <div class="svc-item magnetic" onclick="openServiceModal('clipin')"><div class="svc-info"><span class="svc-arrow">→</span><div><h4>Doczepianie włosów Clip in</h4><p>30 min</p></div></div><div class="svc-price">70 zł</div></div>
+        <div class="svc-item magnetic" onclick="openServiceModal('nanoplastia')"><div class="svc-info"><span class="svc-arrow">→</span><div><h4>Nanoplastia Włosów</h4><p>Z dojazdem w Łodzi</p></div></div><div class="svc-price">od 500 zł</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="modal-overlay" id="serviceModal" onclick="if(event.target===this)closeServiceModal()">
+  <div class="modal-content" style="position:relative">
+    <button class="modal-close magnetic" onclick="closeServiceModal()">&times;</button>
+    <div class="img-wrapper modal-img" id="modalImgWrapper">
+      <img id="modalImg" src="" alt="Usługa" style="display:none">
+      <div id="modalBaContainer" style="display:none; width:100%; height:100%; min-height:400px; position:relative;"></div>
+    </div>
+    <div class="modal-text">
+      <h3 id="modalTitle">Tytuł</h3>
+      <p id="modalDesc">Opis</p>
+      <div class="modal-price" id="modalPrice">Cena</div>
+      <a href="#" target="_blank" rel="noopener" class="btn btn-gold magnetic booksy-link" id="modalBookBtn">Sprawdź terminy w Booksy</a>
+      <p class="booksy-note">Rezerwacja terminu odbywa się bezpiecznie przez Booksy.</p>
+    </div>
+  </div>
+</div>
+
+<section class="photo" id="sesje">
+  <div class="photo-bg-wrap">
+    <img src="img/1.jpg" alt="" onerror="this.style.display='none'">
+  </div>
+  <div class="container reveal">
+    <div style="text-align:center">
+      <span class="eyebrow">03 — Fotografia</span>
+      <h2 class="sec-title">Pakiety <em>Sesji</em></h2>
+      <div class="sec-desc">Od makijażu po gotowe zdjęcia — studio i plenery.</div>
+    </div>
+    <div class="photo-grid">
+      <div class="pkg-card">
+        <div class="pkg-name">Standard</div><div class="pkg-price">1 700 zł</div>
+        <ul class="pkg-list"><li>Makijaż + stylizacja</li><li>Maks. 2 stylizacje</li><li>Studio</li><li>6 zdjęć elektronicznych</li><li>Wydruki 15×23</li></ul>
+        <a href="#" target="_blank" rel="noopener" class="btn btn-outline magnetic booksy-link" style="width:100%">Zarezerwuj pakiet przez Booksy</a>
+        <p class="pkg-booksy-note">Rezerwacja przez Booksy</p>
+      </div>
+      <div class="pkg-card highlight">
+        <span class="eyebrow" style="margin-bottom:6px">Polecany</span>
+        <div class="pkg-name">Silver</div><div class="pkg-price">2 000 zł</div>
+        <ul class="pkg-list"><li>Makijaż + stylizacja</li><li>Maks. 3 stylizacje</li><li>Studio</li><li>10 zdjęć elektronicznych</li><li>Wydruki 15×23</li></ul>
+        <a href="#" target="_blank" rel="noopener" class="btn btn-gold magnetic booksy-link" style="width:100%">Zarezerwuj pakiet przez Booksy</a>
+        <p class="pkg-booksy-note">Rezerwacja przez Booksy</p>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-name">Gold</div><div class="pkg-price">2 700 zł</div>
+        <ul class="pkg-list"><li>Makijaż + stylizacja</li><li>5 stylizacji</li><li>Studio</li><li>15 zdjęć elektronicznych</li><li>Wydruki 15×23</li></ul>
+        <a href="#" target="_blank" rel="noopener" class="btn btn-outline magnetic booksy-link" style="width:100%">Zarezerwuj pakiet przez Booksy</a>
+        <p class="pkg-booksy-note">Rezerwacja przez Booksy</p>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-name">Plener — 2 miejsca</div><div class="pkg-price">1 400 zł</div>
+        <ul class="pkg-list">
+          <li>Maks. 2 miejsca, blisko siebie</li>
+          <li>Czas trwania: do 2 godzin</li>
+          <li>6 zdjęć cyfrowych w obróbce</li>
+          <li>6 odbitek</li>
+          <li>Dodatkowe ujęcie: 100 zł/szt.</li>
+          <li class="pkg-note">Cena nie zawiera makijażu i stylizacji włosów</li>
+        </ul>
+        <a href="#" target="_blank" rel="noopener" class="btn btn-outline magnetic booksy-link" style="width:100%">Zarezerwuj pakiet przez Booksy</a>
+        <p class="pkg-booksy-note">Rezerwacja przez Booksy</p>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-name">Plener — 1 miejsce</div><div class="pkg-price">1 000 zł</div>
+        <ul class="pkg-list">
+          <li>1 miejsce</li>
+          <li>Czas trwania: do 1 godziny</li>
+          <li>6 zdjęć cyfrowych w obróbce</li>
+          <li>6 odbitek</li>
+          <li>Dodatkowe ujęcie: 100 zł/szt.</li>
+          <li class="pkg-note">Cena nie zawiera makijażu i stylizacji włosów</li>
+        </ul>
+        <a href="#" target="_blank" rel="noopener" class="btn btn-outline magnetic booksy-link" style="width:100%">Zarezerwuj pakiet przez Booksy</a>
+        <p class="pkg-booksy-note">Rezerwacja przez Booksy</p>
+      </div>
+      <div class="pkg-card">
+        <div class="pkg-name">Komunia plener</div><div class="pkg-price">2 000 zł</div>
+        <ul class="pkg-list">
+          <li>Czas trwania: do 3 godzin</li>
+          <li>20 zdjęć cyfrowych w obróbce</li>
+          <li>Zdjęcia również w wersji drukowanej</li>
+          <li>Do 3 miejsc do wyboru</li>
+          <li>Dodatkowe ujęcie: 100 zł/szt.</li>
+          <li class="pkg-note">Realizacja na terenie Łodzi</li>
+        </ul>
+        <a href="#" target="_blank" rel="noopener" class="btn btn-outline magnetic booksy-link" style="width:100%">Zarezerwuj pakiet przez Booksy</a>
+        <p class="pkg-booksy-note">Rezerwacja przez Booksy</p>
+      </div>
+    </div>
+  </div>
+</section>
+</div><!-- /.pin-wrap -->
+
+<div class="sand-ticker reveal">
+  <div class="brands-track">
+    <span>STUDIO</span><span class="dot">✦</span><span>MAKIJAŻ</span><span class="dot">✦</span><span>WŁOSY</span><span class="dot">✦</span><span>FOTOGRAFIA</span><span class="dot">✦</span><span>SESJE PLENEROWE</span><span class="dot">✦</span><span>UPIĘCIA ŻEBERKOWE</span><span class="dot">✦</span><span>KOMUNIA</span><span class="dot">✦</span><span>LUKSUS</span><span class="dot">✦</span>
+    <span>STUDIO</span><span class="dot">✦</span><span>MAKIJAŻ</span><span class="dot">✦</span><span>WŁOSY</span><span class="dot">✦</span><span>FOTOGRAFIA</span><span class="dot">✦</span><span>SESJE PLENEROWE</span><span class="dot">✦</span><span>UPIĘCIA ŻEBERKOWE</span><span class="dot">✦</span><span>KOMUNIA</span><span class="dot">✦</span><span>LUKSUS</span><span class="dot">✦</span>
+  </div>
+</div>
+
+<!-- LOOKBOOK -->
+<section class="lookbook" id="lookbook-sec">
+  <div class="lookbook-bg"></div>
+  <div class="container reveal">
+    <span class="eyebrow">04 — Lookbook</span>
+    <h2 class="sec-title" style="display: block; width: 100%; text-align: center;">
+      Odkryj swój <em>idealny styl</em>
+    </h2>
+    <div class="sec-desc" style="margin-bottom:32px">Krótki quiz — dopasujemy makijaż i fryzurę.</div>
+    
+    <div class="quiz-box">
+      <div class="quiz-step active" id="qs1">
+        <h3>Krok 1/3: Jaka to okazja?</h3>
+        <div class="quiz-options">
+          <button class="quiz-btn magnetic" onclick="chooseOccasion('slub')">💍 Ślub / wesele</button>
+          <button class="quiz-btn magnetic" onclick="chooseOccasion('sesja')">📸 Sesja / reklama / film</button>
+          <button class="quiz-btn magnetic" onclick="chooseOccasion('impreza')">🎉 Wieczorne wyjście / impreza</button>
+          <button class="quiz-btn magnetic" onclick="chooseOccasion('komunia')">🕊️ Komunia / uroczystość</button>
+          <button class="quiz-btn magnetic" onclick="chooseOccasion('biznes')">👔 Biznes / codzienność</button>
+        </div>
+      </div>
+      <div class="quiz-step" id="qs2">
+        <h3>Krok 2/3: Jaki styl makijażu?</h3>
+        <div class="quiz-options">
+          <button class="quiz-btn magnetic" onclick="chooseMakeup('glow')">✨ Delikatny glow</button>
+          <button class="quiz-btn magnetic" onclick="chooseMakeup('glam')">💄 Wyrazisty glam</button>
+          <button class="quiz-btn magnetic" onclick="chooseMakeup('romantic')">🌸 Romantyczny, miękki</button>
+          <button class="quiz-btn magnetic" onclick="chooseMakeup('natural')">🌿 Naturalny, subtelny</button>
+          <button class="quiz-btn quiz-btn-unknown magnetic" onclick="chooseMakeup('unknown')">🤍 Nie wiem — pomóż mi wybrać</button>
+        </div>
+      </div>
+      <div class="quiz-step" id="qs3">
+        <h3>Krok 3/3: Co z włosami?</h3>
+        <div class="quiz-options">
+          <button class="quiz-btn magnetic" onclick="showQuizResult('hollywood')">🌊 Fale Hollywood</button>
+          <button class="quiz-btn magnetic" onclick="showQuizResult('fale')">💫 Fale objętościowe</button>
+          <button class="quiz-btn magnetic" onclick="showQuizResult('upiecie')">🎀 Klasyczne upięcie</button>
+          <button class="quiz-btn magnetic" onclick="showQuizResult('zebrkowe')">✨ Upięcie żeberkowe</button>
+          <button class="quiz-btn magnetic" onclick="showQuizResult('bez')">💄 Tylko makijaż</button>
+          <button class="quiz-btn quiz-btn-unknown magnetic" onclick="showQuizResult('unknown')">🤍 Nie wiem — pomóż mi wybrać</button>
+        </div>
+      </div>
+      <div class="quiz-step" id="qsResult">
+        <h4 id="qResTitle"></h4>
+        <img id="qResImg" alt="">
+        <p id="qResIntro" class="quiz-rec-intro"></p>
+        <div class="quiz-summary-card" id="qResSummary">
+          <div class="quiz-summary-head">Twój dobór usług</div>
+          <div class="quiz-rec-list" id="qResList"></div>
+          <div class="quiz-summary-foot" id="qResSummaryFoot"></div>
+        </div>
+        <p class="quiz-booksy-hint">Rezerwacja terminu odbywa się bezpiecznie przez Booksy.</p>
+        <div class="quiz-options">
+          <a href="#" target="_blank" rel="noopener" id="qResBooksyBtn" class="btn btn-gold magnetic">Przejdź do Booksy i wybierz termin</a>
+          <button class="btn btn-outline magnetic" onclick="editQuizAnswers()">← Zmień odpowiedzi</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALERIA SYMETRYCZNA -->
+<section class="gallery" id="galeria">
+  <div class="container reveal">
+    <span class="eyebrow">05 — Portfolio</span>
+    <h2 class="sec-title" style="text-align:center;">Moje <em>prace</em></h2>
+    <div class="gal-filters">
+      <button class="gal-filter-btn active magnetic" onclick="filterGal('all',this)">Wszystkie</button>
+      <button class="gal-filter-btn magnetic" onclick="filterGal('upiecia',this)">Upięcia włosów</button>
+      <button class="gal-filter-btn magnetic" onclick="filterGal('zebrkowe',this)">Upięcia żeberkowe</button>
+      <button class="gal-filter-btn magnetic" onclick="filterGal('fale',this)">Fale objętościowe</button>
+      <button class="gal-filter-btn magnetic" onclick="filterGal('hollywood',this)">Fale Hollywood</button>
+      <button class="gal-filter-btn magnetic" onclick="filterGal('sylwester',this)">Makijaż sylwestrowy</button>
+      <button class="gal-filter-btn magnetic" onclick="filterGal('sesja',this)">Makijaż sesja / film</button>
+      <button class="gal-filter-btn magnetic" onclick="filterGal('plener',this)">Sesja plenerowa</button>
+      <button class="gal-filter-btn magnetic" onclick="filterGal('komunia',this)">Sesja komunijna</button>
+      <button class="gal-filter-btn magnetic" onclick="filterGal('metamorfozy',this)">Metamorfozy (Przed / Po)</button>
+    </div>
+    <div class="gal-grid" id="galleryGrid">
+      <!-- WSTRZYKIWANE PRZEZ JS -->
+    </div>
+    <button class="gal-load-more" id="galLoadMore" type="button" onclick="loadMoreGallery()">Pokaż więcej</button>
+  </div>
+</section>
+
+<div class="lightbox" id="lightbox" onclick="if(event.target===this)closeLightbox()">
+  <button class="lightbox-close magnetic" onclick="closeLightbox()">&times;</button>
+  <button class="lightbox-nav lightbox-prev magnetic" onclick="event.stopPropagation();lbNav(-1)">‹</button>
+  <img id="lightboxImg" src="" alt="">
+  <button class="lightbox-nav lightbox-next magnetic" onclick="event.stopPropagation();lbNav(1)">›</button>
+</div>
+
+<section class="reviews" id="opinie">
+  <div class="rev-header reveal">
+    <span class="eyebrow">06 — Zaufanie</span>
+    <div class="rev-score">5.0</div>
+    <div style="font-size:12px;letter-spacing:.2em;color:var(--gold);text-transform:uppercase">23 opinie · Google & Booksy</div>
+  </div>
+  <div class="rev-wrapper reveal"><div class="rev-slider" id="revSlider"></div></div>
+</section>
+
+<section class="booking" id="rezerwacja">
+  <div class="container reveal" style="text-align:center">
+    <span class="eyebrow">07 — Rezerwacja</span>
+    <h2 class="sec-title">Gotowa na swoją <em>wizytę?</em></h2>
+    <p class="sec-desc" style="max-width:560px;margin:0 auto 36px;color:var(--text-dark)">
+      Wybierz dogodny termin i zarezerwuj wizytę wygodnie przez Booksy.
+      Wszystkie dostępne terminy i rezerwacje znajdują się w jednym miejscu.
+    </p>
+    <a id="booksyMainBtn" href="#" target="_blank" rel="noopener"
+       class="btn btn-gold magnetic"
+       style="padding:20px 44px;font-size:13px;letter-spacing:.18em">
+      Umów swoją wizytę
+    </a>
+    <p style="margin-top:22px;font-size:12px;letter-spacing:.18em;text-transform:uppercase;color:#9a8675">
+      ✦ Wolisz zadzwonić? &nbsp;<a href="tel:+48508502725" style="color:var(--gold);font-weight:700">+48 508 502 725</a>
+    </p>
+  </div>
+</section>
+
+<section class="contact" id="kontakt">
+  <div class="container reveal">
+    <span class="eyebrow">08 — Kontakt</span>
+    <h2 class="sec-title">Bądźmy w <em>kontakcie</em></h2>
+    <div class="soc-container">
+      <a href="https://www.instagram.com/joannakamasinska/" target="_blank" class="soc-btn magnetic" aria-label="IG"><img src="img/ig.jpg" alt="" onerror="handleImgError(this,'ig.jpg')"></a>
+      <a href="https://www.facebook.com/joannakamasinska/" target="_blank" class="soc-btn magnetic" aria-label="FB"><img src="img/fb.jpg" alt="" onerror="handleImgError(this,'fb.jpg')"></a>
+      <a href="https://www.tiktok.com/@joanna_kamasinska" target="_blank" class="soc-btn magnetic" aria-label="TT"><img src="img/tt.jpg" alt="" onerror="handleImgError(this,'tt.jpg')"></a>
+      <a href="https://booksy.com/pl-pl/255262_joanna-kamasinska-makeup-hair-foto_makijaz_25060_konstantynow-lodzki" target="_blank" class="soc-btn magnetic" aria-label="Booksy"><img src="img/booksy.jpg" alt="" onerror="handleImgError(this,'booksy.jpg')"></a>
+    </div>
+    <div class="contact-grid reveal">
+      <div class="contact-info">
+        <h3>Informacje kontaktowe</h3>
+        <p><strong>Adres studia</strong>Fiołkowa 6<br>95-050 Konstantynów Łódzki</p>
+        <p><strong>Telefon</strong><a href="tel:+48508502725">+48 508 502 725</a></p>
+        <p><strong>E-mail</strong><a href="mailto:kontakt@joannakamasinska.pl">kontakt@joannakamasinska.pl</a></p>
+      </div>
+      <div class="contact-map">
+        <iframe src="https://maps.google.com/maps?q=Fio%C5%82kowa%206,%2095-050%20Konstantyn%C3%B3w%20%C5%81%C3%B3dzki&t=&z=15&ie=UTF8&iwloc=&output=embed" loading="lazy" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer class="footer">
+  <div class="footer-lines"></div>
+  <div class="footer-content">
+    <div class="footer-logo-wrap"><div class="img-wrapper"><img src="img/logo.jpg" alt="JK" onerror="handleImgError(this,'logo.jpg')"></div></div>
+    <h3>Joanna Kamasińska</h3>
+    <p>Fiołkowa 6, 95-050 Konstantynów Łódzki</p>
+  </div>
+  <div class="footer-bottom">&copy; 2024 Joanna Kamasińska. Wszystkie prawa zastrzeżone.</div>
+</footer>
+
+<a href="tel:+48508502725" class="mobile-call-btn" aria-label="Zadzwoń do Joanny">
+  <svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.46 15.46 0 006.59 6.59l2.2-2.2a1 1 0 011.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 011 1V20a1 1 0 01-1 1C10.61 21 3 13.39 3 4a1 1 0 011-1h3.5a1 1 0 011 1c0 1.25.2 2.45.57 3.57a1 1 0 01-.25 1.02l-2.2 2.2z"/></svg>
+  <span>Zadzwoń</span>
+</a>
+<div id="chatbot-fab" class="magnetic" onclick="toggleChat()" aria-label="Chat">
+  <svg width="26" height="26" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2C6.477 2 2 6.477 2 12c0 1.705.43 3.315 1.189 4.743L2 22l5.44-1.141A9.954 9.954 0 0012 22c5.523 0 10-4.477 10-10S17.523 2 12 2z"/></svg>
+</div>
+<div id="chatbot-window">
+  <div id="chatbot-header">
+    <div><strong>Asystent JK</strong><span>Online</span></div>
+    <button id="chatbot-close" onclick="toggleChat()">&times;</button>
+  </div>
+  <div id="chatbot-messages">
+    <div class="chat-bubble bot-bubble">Cześć! 👋 Jestem wirtualnym asystentem Joanny. Mogę pomóc Ci znaleźć informacje dotyczące usług, cen, terminów, portfolio i kontaktu.</div>
+    <div class="chat-quick-replies">
+      <button class="chat-qr-btn" onclick="triggerQuickReply('Oferta')">💄 Oferta</button>
+      <button class="chat-qr-btn" onclick="triggerQuickReply('Cennik')">💰 Cennik</button>
+      <button class="chat-qr-btn" onclick="triggerQuickReply('Termin')">📅 Termin</button>
+      <button class="chat-qr-btn" onclick="triggerQuickReply('Kontakt')">📞 Kontakt</button>
+    </div>
+  </div>
+  <div id="chatbot-input-area">
+    <input type="text" id="chatbot-input" placeholder="Pytanie..." onkeypress="if(event.key==='Enter')sendUserMessage()">
+    <button id="chatbot-send" onclick="sendUserMessage()" aria-label="Wyślij"><svg width="18" height="18" fill="var(--bg-dark)" viewBox="0 0 24 24"><path d="M2.01 21L23 12 2.01 3 2 10l15 2-15 2z"/></svg></button>
+  </div>
+</div>
+
+<script>
+// ================= ZŁOTY PYŁ W OFERCIE =================
+const canvas = document.getElementById('ofertaParticles');
+const ctx = canvas.getContext('2d');
+let particles = [];
+let w, h;
+let mouse = { x: -1000, y: -1000 };
+
+function resizeCanvas() {
+  w = canvas.width = canvas.parentElement.offsetWidth;
+  h = canvas.height = canvas.parentElement.offsetHeight;
+}
+window.addEventListener('resize', resizeCanvas);
+resizeCanvas();
+
+const sectionOferta = document.getElementById('uslugi');
+sectionOferta.addEventListener('mousemove', (e) => {
+  const rect = sectionOferta.getBoundingClientRect();
+  mouse.x = e.clientX - rect.left;
+  mouse.y = e.clientY - rect.top;
+});
+sectionOferta.addEventListener('mouseout', () => { mouse.x = -1000; mouse.y = -1000; });
+
+const particleCount = window.innerWidth < 600 ? 30 : 80;
+class Particle {
+  constructor() {
+    this.x = Math.random() * w; this.y = Math.random() * h;
+    this.r = Math.random() * 1.5 + 0.5;
+    this.baseVx = (Math.random() - 0.5) * 0.3;
+    this.baseVy = (Math.random() - 0.5) * 0.3 - 0.1; 
+    this.vx = this.baseVx; this.vy = this.baseVy;
+    this.alpha = Math.random() * 0.5 + 0.1;
+  }
+  update() {
+    if (mouse.x !== -1000 && mouse.y !== -1000) {
+      let dx = mouse.x - this.x; let dy = mouse.y - this.y;
+      let distance = Math.sqrt(dx * dx + dy * dy);
+      if (distance < 250) { 
+        let force = (250 - distance) / 250;
+        this.vx -= (dx / distance) * force * 1.5; 
+        this.vy -= (dy / distance) * force * 1.5;
+      }
+    }
+    this.vx = this.vx * 0.93 + this.baseVx * 0.07;
+    this.vy = this.vy * 0.93 + this.baseVy * 0.07;
+    this.x += this.vx; this.y += this.vy;
+    if (this.y < -10) this.y = h + 10;
+    if (this.y > h + 10) this.y = -10;
+    if (this.x < -10) this.x = w + 10;
+    if (this.x > w + 10) this.x = -10;
+  }
+  draw() {
+    ctx.beginPath(); ctx.arc(this.x, this.y, this.r, 0, Math.PI * 2);
+    ctx.fillStyle = `rgba(197, 165, 90, ${this.alpha})`; ctx.fill();
+  }
+}
+for (let i = 0; i < particleCount; i++) particles.push(new Particle());
+function animateParticles() {
+  ctx.clearRect(0, 0, w, h);
+  particles.forEach(p => { p.update(); p.draw(); });
+  requestAnimationFrame(animateParticles);
+}
+animateParticles();
+
+// PODSTAWOWE SKRYPTY
+// Funkcje obsługi błędów zdjęć i filmów są zadeklarowane wcześniej w sekcji <head>.
+
+// ZŁOTA KURTYNA
+window.addEventListener('load',()=>setTimeout(()=>document.getElementById('loader').classList.add('done'),400));
+
+// KURSOR I MAGNETYZM
+if(window.matchMedia('(pointer:fine)').matches){
+  const dot=document.getElementById('cursor-dot'),out=document.getElementById('cursor-outline');
+  window.addEventListener('mousemove',e=>{
+    dot.style.transform=`translate(calc(${e.clientX}px - 50%),calc(${e.clientY}px - 50%))`;
+    out.animate({transform:`translate(calc(${e.clientX}px - 50%),calc(${e.clientY}px - 50%))`},{duration:400,fill:'forwards'});
+  });
+  document.querySelectorAll('.magnetic').forEach(btn=>{
+    btn.addEventListener('mousemove',function(e){const r=this.getBoundingClientRect();this.style.transform=`translate(${(e.clientX-r.left-r.width/2)*.3}px,${(e.clientY-r.top-r.height/2)*.3}px)`});
+    btn.addEventListener('mouseleave',function(){this.style.transform=''});
+  });
+  document.querySelectorAll('a,button,.svc-item,.gal-item,.gal-filter-btn,.lightbox-nav,.lightbox-close,.svc-pick').forEach(el=>{
+    el.addEventListener('mouseenter',()=>out.classList.add('hover'));
+    el.addEventListener('mouseleave',()=>out.classList.remove('hover'));
+  });
+}
+
+// EFEKT LATARKI NA CENNIKU
+document.querySelectorAll('.pkg-card').forEach(c=>{
+  c.addEventListener('mousemove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--x',(e.clientX-r.left)+'px');c.style.setProperty('--y',(e.clientY-r.top)+'px')});
+});
+
+// ZDARZENIA SCROLL 
+const nav=document.getElementById('nav');
+const scrollText = document.getElementById('scrollText');
+let st;
+
+window.addEventListener('scroll',()=>{
+  const y=window.scrollY,wh=window.innerHeight;
+
+  if(scrollText){
+    const r=scrollText.getBoundingClientRect();
+    let p=((wh*.85-r.top)/(wh*.55))*100;
+    p=Math.max(0,Math.min(100,p));
+    scrollText.style.setProperty('--fill',p+'%');
+  }
+
+  if(y>50){nav.classList.add('scrolled','nav-hidden')}else{nav.classList.remove('scrolled','nav-hidden')}
+  clearTimeout(st);st=setTimeout(()=>nav.classList.remove('nav-hidden'),250);
+});
+
+const burgerBtn=document.getElementById('burger');
+const mobileMenu=document.getElementById('mob');
+function setMobileMenu(open){
+  burgerBtn.classList.toggle('open',open);
+  mobileMenu.classList.toggle('open',open);
+  burgerBtn.setAttribute('aria-expanded',String(open));
+  document.body.classList.toggle('menu-open',open);
+  document.body.style.overflow=open?'hidden':'';
+  if(open){
+    nav.classList.remove('nav-hidden');
+    const chatWindow=document.getElementById('chatbot-window');
+    if(chatWindow)chatWindow.classList.remove('open');
+    document.body.classList.remove('chat-open');
+  }
+}
+burgerBtn.setAttribute('aria-expanded','false');
+burgerBtn.addEventListener('click',()=>setMobileMenu(!mobileMenu.classList.contains('open')));
+document.querySelectorAll('#mob a').forEach(a=>a.addEventListener('click',()=>setMobileMenu(false)));
+
+// Animacje pojawiania — próg 0 naprawia niewidoczne, bardzo wysokie sekcje
+// (np. galerię na telefonach, której 8% wysokości nie mieściło się w ekranie).
+const obs=new IntersectionObserver(es=>es.forEach(e=>{
+  if(e.isIntersecting){
+    e.target.classList.add('active');
+    obs.unobserve(e.target);
+  }
+}),{threshold:0,rootMargin:'0px 0px -5% 0px'});
+document.querySelectorAll('.reveal').forEach(el=>obs.observe(el));
+
+
+/* ===== GALERIA SYMETRYCZNA ===== */
+const galGrid = document.getElementById('galleryGrid');
+const lbSources = []; 
+
+function baHTML(after,before){
+  return `<div class="ba-wrap">
+    <div class="ba-labels"><span>Przed</span><span>Po</span></div>
+    <img src="${after}" class="ba-img after" alt="Po" onerror="handleImgError(this,'${after.split('/').pop()}')">
+    <img src="${before}" class="ba-img before" alt="Przed" onerror="handleImgError(this,'${before.split('/').pop()}')">
+    <input type="range" min="0" max="100" value="50" class="ba-slider magnetic">
+    <div class="ba-line"><div class="ba-btn">↔</div></div>
+  </div>`;
+}
+
+let animDelayIndex = 0;
+const baItems = [
+  {type:'ba',after:'img/nanoplastia1.jpg',before:'img/nanoplastia2.jpg',cat:'metamorfozy'},
+  {type:'ba',after:'img/clipin1.jpg',before:'img/clipin2.jpg',cat:'metamorfozy'}
+];
+baItems.forEach(item => {
+  const tile = document.createElement('div');
+  tile.className = `ba-container gal-item`;
+  tile.dataset.cat = item.cat;
+  tile.style.transitionDelay = `${(animDelayIndex % 15) * 0.05}s`;
+  animDelayIndex++;
+  tile.innerHTML = baHTML(item.after, item.before);
+  galGrid.appendChild(tile);
+});
+
+const photoSets=[
+  {p:'upiecie',max:6,cat:'upiecia'},
+  {p:'upiecie-zebrkowe',max:2,cat:'zebrkowe'},
+  {p:'objetosciowe',max:5,cat:'fale'}, {p:'hollywood',max:3,cat:'hollywood'},
+  {p:'sylwestrowy',max:4,cat:'sylwester'}, {p:'filmu',max:8,cat:'sesja'}, {p:'plenerowa',max:3,cat:'plener'},
+  {p:'komunijna',max:4,cat:'komunia'}
+];
+photoSets.forEach(g => {
+  for(let i=1; i<=g.max; i++) {
+    const src = `img/${g.p}${i}.jpg`;
+    const idx = lbSources.length;
+    lbSources.push(src);
+    
+    const tile = document.createElement('div');
+    tile.className = `gal-item cine`;
+    tile.dataset.cat = g.cat;
+    tile.style.transitionDelay = `${(animDelayIndex % 15) * 0.05}s`;
+    animDelayIndex++;
+
+    tile.innerHTML = `
+      <img src="${src}" alt="Praca" loading="lazy" onerror="handleImgError(this,'${src.split('/').pop()}')">
+      <div class="gal-tile-overlay"><span class="gal-tile-label magnetic">Zobacz</span></div>
+    `;
+    tile.style.cursor = 'pointer';
+    tile.onclick = function() { openLightbox(idx); };
+    galGrid.appendChild(tile);
+  }
+});
+
+document.querySelectorAll('.ba-slider').forEach(sl=>{
+  sl.addEventListener('input',e=>{
+    const v=e.target.value, c=e.target.closest('.ba-wrap');
+    const b=c.querySelector('.before'), l=c.querySelector('.ba-line');
+    if(b) b.style.clipPath=`polygon(0 0,${v}% 0,${v}% 100%,0 100%)`;
+    if(l) l.style.left=v+'%';
+  });
+});
+
+let currentGalCategory='all';
+const galleryPageSize=()=>window.matchMedia('(max-width:600px)').matches?8:12;
+let galleryLimit=galleryPageSize();
+let lastGalleryPageSize=galleryPageSize();
+
+function galleryItemMatches(t,cat){
+  return cat==='all' || t.dataset.cat===cat;
+}
+
+function renderGalleryVisibility(){
+  const items=[...document.querySelectorAll('.gal-item')];
+  const matching=items.filter(t=>galleryItemMatches(t,currentGalCategory));
+
+  items.forEach(t=>{
+    t.style.transitionDelay='0s';
+    const categoryMatch=galleryItemMatches(t,currentGalCategory);
+    t.classList.toggle('hide',!categoryMatch);
+    t.classList.remove('mobile-page-hide');
+  });
+
+  matching.forEach((t,i)=>t.classList.toggle('mobile-page-hide',i>=galleryLimit));
+
+  const moreBtn=document.getElementById('galLoadMore');
+  if(moreBtn){
+    moreBtn.hidden=matching.length<=galleryLimit;
+    const left=Math.max(0,matching.length-galleryLimit);
+    moreBtn.textContent=left>0?`Pokaż więcej (${Math.min(left,galleryPageSize())})`:'Pokaż więcej';
+  }
+}
+
+function filterGal(cat,button){
+  currentGalCategory=cat;
+  galleryLimit=galleryPageSize();
+  document.querySelectorAll('.gal-filter-btn').forEach(b=>b.classList.remove('active'));
+  if(button)button.classList.add('active');
+  renderGalleryVisibility();
+}
+
+function loadMoreGallery(){
+  galleryLimit+=galleryPageSize();
+  renderGalleryVisibility();
+}
+
+let galleryResizeTimer;
+window.addEventListener('resize',()=>{
+  clearTimeout(galleryResizeTimer);
+  galleryResizeTimer=setTimeout(()=>{
+    const newPageSize=galleryPageSize();
+    if(newPageSize!==lastGalleryPageSize){
+      galleryLimit=newPageSize;
+      lastGalleryPageSize=newPageSize;
+    }
+    renderGalleryVisibility();
+  },120);
+});
+renderGalleryVisibility();
+
+/* Lightbox */
+let lbI=0;
+function openLightbox(i){lbI=i;document.getElementById('lightboxImg').src=lbSources[lbI];document.getElementById('lightbox').classList.add('open');document.body.style.overflow='hidden'}
+function closeLightbox(){document.getElementById('lightbox').classList.remove('open');document.body.style.overflow=''}
+function lbNav(d){if(!lbSources.length)return;lbI=(lbI+d+lbSources.length)%lbSources.length;document.getElementById('lightboxImg').src=lbSources[lbI]}
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeLightbox();if(e.key==='ArrowRight')lbNav(1);if(e.key==='ArrowLeft')lbNav(-1)});
+
+
+/* ===== OFERTA POP-UP ===== */
+const servicePopups={
+  okolicznosciowy:{title:'Makijaż Okolicznościowy',price:'300 zł',img:'img/filmu1.jpg',desc:'Perfekcyjny makijaż dobrany do Twojego typu urody i okazji.'},
+  sesyjny:{title:'Do sesji / reklamy / filmu',price:'300 zł',img:'img/filmu2.jpg',desc:'Profesjonalny makijaż dopasowany do światła studyjnego, planu filmowego lub sesji reklamowej. Trwały, wyrazisty i idealnie wyglądający na zdjęciach oraz w kamerze.'},
+  slubny:{title:'Makijaż Ślubny',price:'350 zł',img:'img/filmu3.jpg',desc:'Najważniejszy makijaż w życiu. Przedłuża trwałość do maksimum.'},
+  panmlody:{title:'Korekta Pana Młodego',price:'100 zł',img:'img/korektamlody.jpg',desc:'Dyskretna korekta cery. Matowanie i zatuszowanie niedoskonałości.'},
+  sylwester:{title:'Makijaż Sylwestrowy',price:'od 300 zł',img:'img/sylwestrowy1.jpg',desc:'Czas na błysk! Wyraziste spojrzenie, brokaty, kryształki.'},
+  pakietoko:{title:'Makijaż + Fale (Okolicznościowy)',price:'od 600 zł',img:'img/objetosciowe1.jpg',desc:'Kompletna metamorfoza w jednym miejscu! Oszczędność czasu.'},
+  pakietslub:{title:'Makijaż Ślubny + Fale',price:'od 630 zł',img:'img/objetosciowe2.jpg',desc:'Pakiet ślubny VIP. Stylizacja, która przetrwa całonocną zabawę.'},
+  hollywood:{title:'Fale Hollywood',price:'od 300 zł',img:'img/hollywood1.jpg',desc:'Klasyka czerwonego dywanu. Gładkie, lustrzane fale.'},
+  upiecia:{title:'Upięcie',price:'od 400 zł',img:'img/upiecie1.jpg',desc:'Eleganckie, lekkie i trwałe upięcie dopasowane do okazji, kształtu twarzy i stylu stylizacji.'},
+  upieciezebrkowe:{title:'Upięcie metodą żeberkową',price:'od 400 zł',img:'img/upiecie-zebrkowe.jpg',desc:'Upięcie wykonane metodą żeberkową — nowoczesna technika zapewniająca lekkość, objętość i wyjątkową trwałość fryzury. Ostateczna cena zależy od długości włosów, grubości włosów oraz stopnia trudności wykonania fryzury.'},
+  clipin:{title:'Doczepianie włosów Clip in',price:'70 zł',imgAfter:'img/clipin1.jpg',imgBefore:'img/clipin2.jpg',desc:'Przedłużenie włosów okazjonalnie metodą Clip in. Pamiętaj, że na wizytę przychodzisz już z własnymi doczepkami.'},
+  nanoplastia:{title:'Nanoplastia Włosów',price:'od 500 zł',imgAfter:'img/nanoplastia1.jpg',imgBefore:'img/nanoplastia2.jpg',desc:'Innowacyjny zabieg trwałego prostowania i odżywiania włosów. Zabieg premium z dojazdem w Łodzi.'}
+};
+
+let currentServiceKey='';
+function openServiceModal(key){
+  const d=servicePopups[key];if(!d)return;
+  currentServiceKey=key;
+  document.getElementById('modalTitle').textContent=d.title;
+  document.getElementById('modalPrice').textContent=d.price;
+  document.getElementById('modalDesc').textContent=d.desc;
+  
+  const img=document.getElementById('modalImg'), ba=document.getElementById('modalBaContainer'), w=document.getElementById('modalImgWrapper');
+  const err=w.querySelector('.img-error-state'); if(err) err.remove();
+  
+  if(d.imgBefore){
+    img.style.display='none'; ba.style.display='block';
+    ba.innerHTML = baHTML(d.imgAfter, d.imgBefore);
+    ba.querySelector('.ba-slider').addEventListener('input',e=>{
+      const v=e.target.value, c=e.target.closest('.ba-wrap');
+      c.querySelector('.before').style.clipPath=`polygon(0 0,${v}% 0,${v}% 100%,0 100%)`;
+      c.querySelector('.ba-line').style.left=v+'%';
+    });
+  }else{
+    ba.style.display='none'; ba.innerHTML=''; img.style.display='block';
+    img.onerror=function(){handleImgError(this,d.img.split('/').pop())}; img.src=d.img;
+  }
+  document.getElementById('serviceModal').classList.add('open'); document.body.style.overflow='hidden';
+}
+function closeServiceModal(){document.getElementById('serviceModal').classList.remove('open');document.body.style.overflow=''}
+
+/* ===== QUIZ — REKOMENDACJE + PRZEKIEROWANIE DO BOOKSY ===== */
+let quizState={occasion:'',makeup:''};
+
+function quizStepTo(n){
+  ['qs1','qs2','qs3'].forEach((id,i)=>{
+    document.getElementById(id).classList.toggle('active',i+1===n);
+  });
+}
+function chooseOccasion(o){quizState.occasion=o;quizStepTo(2);}
+function chooseMakeup(m){quizState.makeup=m;quizStepTo(3);}
+
+function getQuizRecommendation(occasion,makeup,hair){
+  // Zwraca {title,img,items:[{icon,label,name}],intro,foot} z uwzględnieniem całej kombinacji odpowiedzi.
+  let makeupName='Makijaż okolicznościowy', hairName='', img='img/filmu1.jpg', title='Twój idealny zestaw';
+  const unknown = makeup==='unknown' || hair==='unknown';
+
+  if(occasion==='slub'){
+    makeupName='Makijaż ślubny / próbny';
+    if(hair==='fale'||hair==='hollywood'){hairName='Fale objętościowe / Hollywood';img='img/objetosciowe2.jpg';}
+    else if(hair==='upiecie'){hairName='Upięcie';img='img/upiecie1.jpg';}
+    else if(hair==='zebrkowe'){hairName='Upięcie metodą żeberkową';img='img/upiecie-zebrkowe1.jpg';}
+    else if(hair==='unknown'){hairName='Fryzura dobrana indywidualnie';img='img/hollywood1.jpg';}
+  } else if(occasion==='sesja'){
+    makeupName='Makijaż do sesji / reklamy / filmu';
+    if(hair==='fale'||hair==='hollywood'){hairName='Fale objętościowe / Hollywood';img=hair==='hollywood'?'img/hollywood1.jpg':'img/objetosciowe1.jpg';}
+    else if(hair==='upiecie'){hairName='Upięcie';img='img/upiecie1.jpg';}
+    else if(hair==='zebrkowe'){hairName='Upięcie metodą żeberkową';img='img/upiecie-zebrkowe1.jpg';}
+    else if(hair==='unknown'){hairName='Fryzura dobrana indywidualnie';img='img/hollywood1.jpg';}
+  } else if(occasion==='impreza'){
+    makeupName='Makijaż sylwestrowy / wieczorowy';
+    if(hair==='fale'||hair==='hollywood'){hairName='Fale objętościowe / Hollywood';img=hair==='hollywood'?'img/hollywood1.jpg':'img/objetosciowe1.jpg';}
+    else if(hair==='upiecie'){hairName='Upięcie';img='img/upiecie1.jpg';}
+    else if(hair==='zebrkowe'){hairName='Upięcie metodą żeberkową';img='img/upiecie-zebrkowe1.jpg';}
+    else if(hair==='unknown'){hairName='Fryzura dobrana indywidualnie';img='img/hollywood1.jpg';}
+  } else { // komunia / biznes / codzienność
+    makeupName='Makijaż okolicznościowy';
+    if(hair==='fale'||hair==='hollywood'){hairName='Fale objętościowe / Hollywood';img=hair==='hollywood'?'img/hollywood1.jpg':'img/objetosciowe1.jpg';}
+    else if(hair==='upiecie'){hairName='Upięcie';img='img/upiecie1.jpg';}
+    else if(hair==='zebrkowe'){hairName='Upięcie metodą żeberkową';img='img/upiecie-zebrkowe1.jpg';}
+    else if(hair==='unknown'){hairName='Fryzura dobrana indywidualnie';img='img/hollywood1.jpg';}
+  }
+  if(makeup==='unknown'){makeupName='Makijaż dobrany indywidualnie';}
+
+  const items=[{icon:'💄',label:'Makijaż',name:makeupName}];
+  if(hair!=='bez')items.push({icon:'💇',label:'Włosy',name:hairName||'Fryzura dobrana indywidualnie'});
+  const intro = unknown
+    ? 'Nie musisz wiedzieć wszystkiego od razu ✨ Na podstawie Twoich odpowiedzi pomożemy dobrać odpowiednią usługę — szczegóły ustalisz podczas kontaktu lub rezerwacji.'
+    : 'Na podstawie Twoich odpowiedzi dobraliśmy usługę, która najlepiej pasuje do wybranej okazji i stylu.';
+  const foot = unknown
+    ? 'Łącznie: dobór usług + indywidualne dopasowanie podczas wizyty'
+    : 'Łącznie: dobór usług zgodny z Twoimi odpowiedziami';
+  return {title,img,items,intro,foot};
+}
+
+function showQuizResult(hair){
+  quizState.hair=hair;
+  quizStepTo(0);
+  const rec=getQuizRecommendation(quizState.occasion,quizState.makeup,hair);
+  document.getElementById('qResTitle').textContent=rec.title;
+  document.getElementById('qResIntro').textContent=rec.intro;
+  const list=document.getElementById('qResList');
+  list.innerHTML=rec.items.map((it,i)=>{
+    const plus=i>0?'<div class="quiz-rec-plus">+</div>':'';
+    return plus+`<div class="quiz-rec-item"><span class="rec-ico">${it.icon}</span><span class="rec-txt"><strong>${it.label}: ${it.name}</strong>Rekomendacja z oferty Joanny</span></div>`;
+  }).join('');
+  document.getElementById('qResSummaryFoot').textContent=rec.foot;
+  const i=document.getElementById('qResImg');
+  i.src=rec.img;
+  i.onerror=function(){this.style.display='none'};
+  i.style.display='block';
+  document.getElementById('qsResult').classList.add('active');
+}
+function editQuizAnswers(){
+  // Wraca do pytania o włosy, zachowując wcześniejsze wybory.
+  document.getElementById('qsResult').classList.remove('active');
+  quizStepTo(3);
+}
+function resetQuiz(){
+  document.getElementById('qsResult').classList.remove('active');
+  quizState={occasion:'',makeup:'',hair:''};
+  quizStepTo(1);
+}
+
+/* ===== OPINIE ===== */
+const revs=[
+  {n:'Patrycja P.',a:'Google',t:'Pani Asia przed przystąpieniem do makijażu uzgadnia, jak klientka chce wyglądać. Makijaż bardzo mi się podobał.'},
+  {n:'Małgorzata M.',a:'Google',t:'Makijaż wraz z fryzurą i czesaniem to był strzał w dziesiątkę.'},
+  {n:'Gosia Pe',a:'Google',t:'Dzięki pani Joannie poczułam się wyjątkowo w ważnym dniu.'},
+  {n:'Klientka',a:'Booksy',t:'Piękny makijaż okolicznościowy, taki jaki chciałam! Pełen profesjonalizm.'},
+  {n:'Paulina P.',a:'Google',t:'Pani Asia stworzyła mi piękny makijaż ślubny oraz fryzurę. Przetrwały całą imprezę.'}
+];
+const rs=document.getElementById('revSlider');
+if(rs){[...revs,...revs,...revs].forEach(r=>{
+  rs.innerHTML+=`<div class="rev-card"><div class="rev-card-stars">★★★★★</div><div class="rev-card-text">„${r.t}"</div><div class="rev-card-author">${r.n}</div><div class="rev-card-source">${r.a}</div></div>`;
+});}
+
+/* ===== LINKI BOOKSY ===== */
+(function(){
+  const url=(window.BOOKSY_URL||'').trim();
+  document.querySelectorAll('.booksy-link, #qResBooksyBtn, #booksyMainBtn').forEach(a=>{
+    if(url)a.setAttribute('href',url);
+    a.setAttribute('target','_blank');
+    a.setAttribute('rel','noopener');
+  });
+})();
+
+/* ===== CHATBOT (Z PEŁNĄ BAZĄ WIEDZY) ===== */
+const cw=document.getElementById('chatbot-window'),ci=document.getElementById('chatbot-input'),cm=document.getElementById('chatbot-messages');
+function toggleChat(){
+  const open=!cw.classList.contains('open');
+  cw.classList.toggle('open',open);
+  document.body.classList.toggle('chat-open',open);
+  if(open)ci.focus();
+}
+function handleChatKey(e){if(e.key==='Enter')sendUserMessage()}
+function triggerQuickReply(t){processUserText(t)}
+function sendUserMessage(){const t=ci.value.trim();if(!t)return;ci.value='';processUserText(t)}
+function processUserText(t){cm.innerHTML+=`<div class="chat-bubble user-bubble">${t}</div>`;cm.scrollTop=cm.scrollHeight;setTimeout(()=>{cm.innerHTML+=`<div class="chat-bubble bot-bubble">${bot(t)}</div>`;cm.scrollTop=cm.scrollHeight},400)}
+
+function bot(text){
+  const t = text.toLowerCase();
+  
+  if(t.includes('cen') || t.includes('koszt') || t.includes('zapłac') || t.includes('płac') || t.includes('cennik')) {
+    if(t.includes('fryzur') || t.includes('włos') || t.includes('fal') || t.includes('upięci')) {
+      return "Cena zależy od rodzaju stylizacji. Dostępne są między innymi:<br><br>💄🌊 Pakiet: makijaż + fale objętościowe — od 600 zł<br>👰🌊 Makijaż ślubny + fale — od 630 zł<br>🌊 Fale objętościowe Hollywood — od 300 zł<br>✨ Upięcie — od 400 zł<br>✨ Upięcie metodą żeberkową — od 400 zł<br>💇 Nanoplastia włosów — od 500 zł<br><br>Jeśli chcesz ustalić szczegóły konkretnej stylizacji, zadzwoń pod numer 508 502 725.";
+    }
+    if(t.includes('makija')) {
+      return "Aktualne ceny makijażu:<br><br>💄 Okolicznościowy — 300 zł<br>📸 Do sesji / reklamy / filmu — 300 zł<br>👰 Ślubny próbny — 350 zł<br>🤵 Korekta pana młodego — 100 zł<br>✨ Sylwestrowy — od 300 zł<br><br>Więcej informacji znajdziesz w sekcji „Oferta”.";
+    }
+    return "Ceny makijażu:<br>💄 Okolicznościowy — 300 zł<br>📸 Do sesji / reklamy / filmu — 300 zł<br>👰 Ślubny próbny — 350 zł<br>✨ Sylwestrowy — od 300 zł<br><br>Włosy:<br>🌊 Fale Hollywood — od 300 zł<br>✨ Upięcie — od 400 zł<br><br>Pełny cennik znajdziesz w sekcji „Oferta”.<br><a href='#uslugi' class='chat-btn-inline' onclick='toggleChat()'>ZOBACZ OFERTĘ</a>";
+  }
+  
+  if(t.includes('ofert') || t.includes('usług') || t.includes('uslug')) {
+    return "Joanna zajmuje się profesjonalnym makijażem oraz stylizacją fryzur. Szczegółową ofertę wszystkich usług znajdziesz w sekcji „Oferta”.<br><a href='#uslugi' class='chat-btn-inline' onclick='toggleChat()'>ZOBACZ OFERTĘ</a>";
+  }
+  
+  if(t.includes('termin') || t.includes('rezerw') || t.includes('umów') || t.includes('woln') || t.includes('wizyt') || t.includes('przyjmuj')) {
+    return "Tak! 📅 Zarezerwuj wygodnie termin przez Booksy lub zadzwoń bezpośrednio do Joanny pod numer 508 502 725.<br><a href='#' target='_blank' rel='noopener' class='chat-btn-inline booksy-link' onclick='toggleChat()'>📅 ZAREZERWUJ PRZEZ BOOKSY</a>";
+  }
+  
+  if(t.includes('portfolio') || t.includes('galeri') || t.includes('zdjęci') || t.includes('zdjeci') || t.includes('realizacj') || t.includes('prac') || t.includes('instagram')) {
+    return "Tak! 📸 Zdjęcia realizacji znajdziesz w sekcji „Portfolio”. Zobaczysz tam makijaże i stylizacje włosów.<br><a href='#galeria' class='chat-btn-inline' onclick='toggleChat()'>📸 PRZEJDŹ DO GALERII</a>";
+  }
+  
+  if(t.includes('telefon') || t.includes('numer') || t.includes('dzwoni') || t.includes('kontakt') || t.includes('skontakt')) {
+    return "📞 Numer telefonu do Joanny: 508 502 725.<br>📍 Adres: ul. Fiołkowa 6, Konstantynów Łódzki.<br><a href='tel:+48508502725' class='chat-btn-inline'>📞 ZADZWOŃ</a>";
+  }
+  
+  if(t.includes('gdzie') || t.includes('lokalizacj') || t.includes('adres') || t.includes('dojazd') || t.includes('studio')) {
+    return "Joanna przyjmuje w Konstantynowie Łódzkim przy ulicy Fiołkowej 6. 📍 Dokładne informacje znajdziesz w sekcji „Kontakt”.<br><a href='#kontakt' class='chat-btn-inline' onclick='toggleChat()'>📍 ZOBACZ MAPĘ</a>";
+  }
+  
+  if(t.includes('makija') || t.includes('makeup') || t.includes('wesele') || t.includes('ślub') || t.includes('slub') || t.includes('okolicznościow')) {
+    return "Tak, oczywiście! 💄 Joanna wykonuje profesjonalne makijaże ślubne, okolicznościowe i na sesje. Dostępny jest też pakiet (makijaż + fryzura). Wszystko jest w sekcji „Oferta”.";
+  }
+  
+  if(t.includes('fryzur') || t.includes('włosy') || t.includes('wlosy') || t.includes('upięci') || t.includes('upieci') || t.includes('fal')) {
+    return "Tak, można umówić również stylizację fryzury. Joanna wykonuje m.in. fale Hollywood, objętościowe oraz upięcia metodą żeberkową.";
+  }
+  
+  if(t.includes('przygotow') || t.includes('trwa') || t.includes('inspiracj') || t.includes('próbn') || t.includes('grup') || t.includes('kilku osób') || t.includes('weekend') || t.includes('kosmetyk')) {
+    return "Większość szczegółowych kwestii (np. czas trwania, odpowiednie przygotowanie, inspiracje, rezerwacje dla grup) ustalamy indywidualnie.<br><br>Najlepiej skontaktować się pod numer 508 502 725.<br><a href='tel:+48508502725' class='chat-btn-inline'>📞 ZADZWOŃ</a>";
+  }
+
+  return "Nie mam jeszcze informacji na ten temat 😊 Mogę pomóc w sprawach oferty, cen, terminów, portfolio i lokalizacji.<br><br>Jeśli potrzebujesz czegoś innego, zadzwoń pod 508 502 725.<br><a href='tel:+48508502725' class='chat-btn-inline'>📞 ZADZWOŃ DO JOANNY</a>";
+}
+</script>
+</body>
+</html>
